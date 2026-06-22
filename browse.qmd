@@ -1,0 +1,163 @@
+---
+title: "Browse the gene sets"
+page-layout: full
+toc: false
+code-tools: false
+code-copy: false
+execute:
+  echo: false
+---
+
+Pick a gene set to see its genes, signalling tiers and citations. Use the search
+box to filter the list. PMIDs link to PubMed.
+
+[Download CSV](data/immprint_0.2.0-alpha.csv){.btn-ghost download="immprint_0.2.0-alpha.csv"}
+[Download JSON](data/immprint_0.2.0-alpha.json){.btn-ghost download="immprint_0.2.0-alpha.json"}
+
+```{ojs}
+data = FileAttachment("data/immprint_0.2.0-alpha.csv").csv()
+```
+
+```{ojs}
+setSummary = {
+  const byset = new Map();
+  for (const d of data) {
+    if (!byset.has(d.gene_set)) byset.set(d.gene_set, new Set());
+    byset.get(d.gene_set).add(d.gene_symbol);
+  }
+  return Array.from(byset, ([name, genes]) => ({ name, n: genes.size }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+```
+
+```{ojs}
+mutable selectedSet = null
+mutable listQuery = ""
+```
+
+```{ojs}
+// Search box in its own cell so it keeps focus while the list filters
+filterBox = {
+  const inp = html`<input type="search" placeholder="Filter gene sets" class="setsearch" />`;
+  inp.oninput = () => { mutable listQuery = inp.value; };
+  return inp;
+}
+```
+
+```{ojs}
+// Gene set list: linked text, three columns, alphabetical, filtered by the search
+{
+  const ql = (listQuery || "").trim().toLowerCase();
+  const sets = setSummary.filter(s => !ql || s.name.toLowerCase().includes(ql));
+  const el = sets.length
+    ? html`<div class="setcols">
+        ${sets.map(s => html`<a class=${"setlink" + (s.name === selectedSet ? " active" : "")} data-set="${s.name}">${s.name} <span class="ct">${s.n}</span></a>`)}
+      </div>`
+    : html`<p class="muted" style="margin-top:0.8rem">No gene set matches that filter.</p>`;
+  el.addEventListener("click", (e) => {
+    const a = e.target.closest(".setlink");
+    if (a && a.dataset.set) {
+      mutable selectedSet = a.dataset.set;
+      setTimeout(() => {
+        const t = document.getElementById("set-detail");
+        if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 60);
+    }
+  });
+  return el;
+}
+```
+
+```{ojs}
+// Selected-set table: fully displayed, no scroll bar
+{
+  if (!selectedSet) {
+    return html`<p class="muted" style="margin-top:1.6rem">Select a gene set above to view its genes, tiers and citations.</p>`;
+  }
+  const rows = data.filter(d => d.gene_set === selectedSet).slice().sort((a, b) => {
+    const t = (+a.pathway_level) - (+b.pathway_level);
+    if (t) return t;
+    const ak = a.cell_type === "pan" ? "" : a.cell_type.toLowerCase();
+    const bk = b.cell_type === "pan" ? "" : b.cell_type.toLowerCase();
+    return ak.localeCompare(bk);
+  });
+  const body = [
+    "Gene set: " + selectedSet, "",
+    "### Genes to add", "",
+    "### Genes to remove", "",
+    "### Citation amendments", "",
+    "### Other notes", ""
+  ].join("\n");
+  const issueUrl = "https://github.com/akmclz/immprint/issues/new?title="
+    + encodeURIComponent("Feedback: " + selectedSet)
+    + "&body=" + encodeURIComponent(body);
+  return html`<div id="set-detail" style="margin-top:1.8rem">
+    <div class="set-detail-head" style="font-size:1.05rem">${selectedSet}</div>
+    <p class="muted" style="margin:0.2rem 0 0.7rem">${rows.length} genes</p>
+    ${tableFor(rows)}
+    <div class="set-feedback">
+      <a class="btn-ghost" href=${issueUrl} target="_blank" rel="noopener">Suggest changes to this gene set</a>
+      <span class="muted">Opens a pre-filled GitHub issue.</span>
+    </div>
+  </div>`;
+}
+```
+
+```{ojs}
+tierLabel = ({ "1": "Receptor", "2": "Transducer", "3": "Effector" })
+tierClass = ({ "1": "r", "2": "t", "3": "e" })
+
+roleLabel = ({ inhibitory: "Inhibitory", activating: "Activating", context_dependent: "Context-dependent" })
+roleClass = ({ inhibitory: "inh", activating: "act", context_dependent: "ctx" })
+
+function roleCell(r) {
+  const v = (r ?? "none").toString();
+  if (v === "none" || !roleLabel[v]) return html`<span class="muted">·</span>`;
+  return html`<span class="rolepill ${roleClass[v]}">${roleLabel[v]}</span>`;
+}
+
+function pmidCell(p) {
+  const ids = (p ?? "").toString().split(";").map(s => s.trim()).filter(Boolean);
+  return html`${ids.map((id, i) => html`${i ? ", " : ""}<a href=${"https://pubmed.ncbi.nlm.nih.gov/" + id + "/"} target="_blank" rel="noopener">${id}</a>`)}`;
+}
+
+cellTypeColours = ({
+  "pan": "#94A3B8",
+  "T cell": "#22C55E",
+  "B cell": "#38BDF8",
+  "NK cell": "#F97316",
+  "Epithelial": "#EC4899",
+  "Monocyte/Macrophage": "#8B5CF6",
+  "Endothelial": "#EF4444",
+  "Fibroblast": "#D97706"
+})
+
+// cell_type may hold several lineages, ";"-separated; render one chip each.
+function cellTypeCell(v) {
+  const parts = (v ?? "").toString().split(";").map(s => s.trim()).filter(Boolean);
+  if (!parts.length) return html`<span class="muted">·</span>`;
+  return html`${parts.map(p => {
+    const c = cellTypeColours[p] ?? "#94A3B8";
+    const cls = "ctpill" + (p === "pan" ? " pan" : "");
+    return html`<span class=${cls} style=${"--ctc: " + c}>${p}</span>`;
+  })}`;
+}
+
+function tableFor(rows) {
+  return html`<table class="setT">
+    <thead><tr>
+      <th>Gene</th><th>Tier</th><th>Regulatory role</th><th>Cell type</th><th>PMID(s)</th><th>MSigDB reference</th>
+    </tr></thead>
+    <tbody>
+      ${rows.map(d => html`<tr>
+        <td class="mono">${d.gene_symbol}</td>
+        <td><span class="tierpill ${tierClass[d.pathway_level] ?? ""}">${tierLabel[d.pathway_level] ?? d.pathway_level}</span></td>
+        <td>${roleCell(d.regulatory_role)}</td>
+        <td>${cellTypeCell(d.cell_type)}</td>
+        <td>${pmidCell(d.pmids)}</td>
+        <td>${d.reference_gene_set ? d.reference_gene_set : html`<span class="muted">·</span>`}</td>
+      </tr>`)}
+    </tbody>
+  </table>`;
+}
+```

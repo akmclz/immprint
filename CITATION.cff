@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "ImmPrint: a curated, citation-backed collection of immune signalling gene sets"
+message: "If you use ImmPrint, please cite the specific version you used."
+type: dataset
+authors:
+  - given-names: "Anthony K."
+    family-names: "McLean"
+    orcid: "https://orcid.org/0009-0001-0393-2183"
+    affiliation: "Newcastle University"
+version: "0.2.0-alpha"
+date-released: "2026-06-20"
+url: "https://akmclz.github.io/immprint"
+repository-code: "https://github.com/akmclz/immprint"
+license: "CC-BY-4.0"
+keywords:
+  - immunology
+  - gene sets
+  - single-cell RNA-seq
+  - module scoring
+  - transcriptomics

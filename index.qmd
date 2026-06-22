@@ -1,0 +1,127 @@
+---
+pagetitle: "Home"
+toc: false
+page-layout: article
+---
+
+```{=html}
+<section class="hero">
+  <div class="eyebrow">ImmPrint immune gene set collection · v0.2.0-alpha</div>
+  <h1>Reliable gene sets for immune signalling.</h1>
+  <p class="lede">ImmPrint is a focused collection of immune signalling gene sets,
+  built so you can score them with confidence. Each gene is specific to the
+  process, kept apart from the ligand that triggers it, placed in a Receptor →
+  Transducer → Effector hierarchy and tied to a paper for <em>that</em> gene in
+  <em>that</em> pathway.</p>
+  <div class="cta">
+    <a class="btn-primary" href="browse.html">Browse the gene sets</a>
+    <a class="btn-ghost" href="access.html">Use it in R</a>
+  </div>
+</section>
+```
+
+```{ojs}
+//| echo: false
+data = FileAttachment("data/immprint_0.2.0-alpha.csv").csv()
+```
+
+```{ojs}
+//| echo: false
+heroSet = "IMMPRINT_IFNG_SIGNALLING"
+heroTiers = [
+  { tier: "r", label: "Receptor", genes: ["IFNGR1", "IFNGR2"] },
+  { tier: "t", label: "Transducer", genes: ["JAK1", "JAK2", "STAT1"] },
+  { tier: "e", label: "Effector", genes: ["CXCL9", "CXCL10", "GBP1"] }
+]
+tierColour = ({ r: "var(--tier-receptor)", t: "var(--tier-transducer)", e: "var(--tier-effector)" })
+heroPapers = ({
+  IFNGR1: 'Aguet, Dembić & Merlin (1988), "Molecular cloning and expression of the human interferon-gamma receptor"',
+  IFNGR2: 'Hemmi et al. (1994), "A novel member of the interferon receptor family complements functionality of the murine interferon gamma receptor in human cells"',
+  JAK1: 'Müller et al. (1993), "The protein tyrosine kinase JAK1 complements defects in interferon-alpha/beta and -gamma signal transduction"',
+  JAK2: 'Watling et al. (1993), "Complementation by the protein tyrosine kinase JAK2 of a mutant cell line defective in the interferon-gamma signal transduction pathway"',
+  STAT1: 'Shuai et al. (1992), "Activation of transcription by IFN-gamma: tyrosine phosphorylation of a 91-kD DNA binding protein"',
+  CXCL9: 'Liao et al. (1995), "Human Mig chemokine: biochemical and functional characterization"',
+  CXCL10: 'Luster, Unkeless & Ravetch (1985), "γ-Interferon transcriptionally regulates an early-response gene containing homology to platelet proteins"',
+  GBP1: 'Prakash et al. (2000), "Triphosphate structure of guanylate-binding protein 1 and implications for nucleotide binding and GTPase mechanism"'
+})
+mutable picked = "STAT1"
+```
+
+```{ojs}
+//| echo: false
+function pmidLine(gene) {
+  const row = data.find(d => d.gene_set === heroSet && d.gene_symbol === gene);
+  const ids = row ? String(row.pmids).split(";").map(s => s.trim()).filter(Boolean) : [];
+  const col = heroTiers.find(c => c.genes.includes(gene));
+  const colour = col ? tierColour[col.tier] : "var(--ink)";
+  return html`<div class="pmid">
+    <div class="pmid-line"><strong style=${"color:" + colour}>${gene}</strong> &nbsp;·&nbsp; ${ids.length
+      ? ids.map((id, i) => html`${i ? ", " : ""}<a style=${"color:" + colour} href=${"https://pubmed.ncbi.nlm.nih.gov/" + id + "/"} target="_blank" rel="noopener">PMID ${id}</a>`)
+      : "no recorded citation"}</div>
+    <div class="paper-title">${heroPapers[gene] || ""}</div>
+  </div>`;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const el = html`<div class="trace">
+    <div class="trace-head">one set, three tiers: <span class="setname">${heroSet}</span>*</div>
+    <div class="tiers">
+      ${heroTiers.map(col => html`<div class="tier ${col.tier}">
+        <div class="tlabel">${col.label}</div>
+        ${col.genes.map(g => html`<span class="gene" data-gene="${g}"
+            style=${picked === g ? ("border-bottom-color:" + tierColour[col.tier]) : ""}>${g}</span>`)}
+      </div>`)}
+    </div>
+    <div class="click-note">Click any gene to see its recorded citation</div>
+    ${pmidLine(picked)}
+    <div class="trace-foot">*These are a few example genes from this set rather than the full list.</div>
+  </div>`;
+  el.addEventListener("click", (e) => {
+    const span = e.target.closest(".gene");
+    if (span && span.dataset.gene) mutable picked = span.dataset.gene;
+  });
+  return el;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div class="statstrip">
+  <div class="stat"><div class="num">${new Set(data.map(d => d.gene_set)).size}</div><div class="cap">gene sets</div></div>
+  <div class="stat"><div class="num">${data.length}</div><div class="cap">gene memberships</div></div>
+  <div class="stat"><div class="num">${new Set(data.flatMap(d => d.cell_type.split(";").map(s => s.trim())).filter(s => s && s !== "pan")).size}</div><div class="cap">cell type variants</div></div>
+  <div class="stat"><div class="num">100%</div><div class="cap">PMID-backed</div></div>
+</div>`
+```
+
+## What sets it apart
+
+Broad collections (Hallmark, Reactome, GO) are built for coverage. ImmPrint is
+built to be a focused immune signalling resource you can score and defend.
+
+::: feat
+### Mechanistic specificity
+Each set is built around a single process. Ubiquitous machinery (ribosomal,
+proteasomal, ubiquitin) and non-specific stress or activation families (MAPK, ATF,
+JUN, FOS, HSP) are excluded by policy.
+
+### Inducer and responder separation
+A pathway's own ligand is excluded from its signalling set but kept where it is a
+genuine output, so `IL2` is absent from `IMMPRINT_IL2_SIGNALLING`, yet `IFNG` is
+present in `IMMPRINT_TYPE1_RESPONSE`. This matters most in single-cell data, where
+the sending and receiving cells are not the same cell.
+
+### A signalling hierarchy
+Every gene is placed in a three-tier Receptor → Transducer → Effector hierarchy, so a
+set can be read, or subset, by where each gene sits in the cascade.
+
+### Citations you can follow
+Every gene set membership carries a PubMed ID for a paper linking that gene to that
+named pathway. Where MSigDB corroborates a membership, that reference is recorded
+too.
+:::
+
+[Read the curation rationale →](rationale.qmd)

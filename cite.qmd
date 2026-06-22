@@ -1,0 +1,46 @@
+---
+title: "Cite ImmPrint"
+---
+
+If ImmPrint contributes to your work, please cite the **specific version** you used
+so your analysis stays reproducible.
+
+## DOI
+
+A versioned DOI is minted through [Zenodo](https://zenodo.org/) for each release.
+
+::: callout-note
+The first archived release will carry a Zenodo DOI, and this page will then list
+both the concept DOI (which always resolves to the latest version) and the
+per-version DOI. Until then, cite the version and URL below.
+:::
+
+## Citation
+
+> McLean, A. K. (2026). *ImmPrint: a curated, citation-backed collection of immune
+> signalling gene sets* (Version 0.2.0-alpha) [Data set].
+> <https://akmclz.github.io/immprint>
+
+## BibTeX
+
+```bibtex
+@misc{immprint,
+  author       = {McLean, Anthony K.},
+  title        = {{ImmPrint: a curated, citation-backed collection of immune
+                  signalling gene sets}},
+  year         = {2026},
+  version      = {0.2.0-alpha},
+  howpublished = {\url{https://akmclz.github.io/immprint}},
+  note         = {Accessed: YYYY-MM-DD}
+}
+```
+
+A machine-readable [`CITATION.cff`](https://github.com/akmclz/immprint/blob/main/CITATION.cff)
+is included in the repository; GitHub renders a "Cite this repository" button from
+it.
+
+## Citing the collection versus the software
+
+- Cite **ImmPrint** (this page) for the gene set definitions and data.
+- Cite the **`immprintr`** package separately if you want to credit the software,
+  using `citation("immprintr")` once it is installed.

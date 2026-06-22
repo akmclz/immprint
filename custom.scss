@@ -1,0 +1,304 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+// Type
+$font-family-sans-serif: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, monospace;
+$headings-font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+$headings-font-weight: 600;
+$font-size-base: 1.0625rem;
+$line-height-base: 1.65;
+
+// Base palette
+$body-color: #16191f;
+$body-bg: #ffffff;
+$primary: #7c3aed;
+$link-color: #7c3aed;
+$border-color: #e6e8ec;
+
+// Signalling-hierarchy triad (matches the ImmPrint logo)
+$tier-receptor: #7c3aed;   // deep violet
+$tier-transducer: #06b6d4; // electric cyan
+$tier-effector: #f43f5e;   // warm coral
+
+$navbar-bg: #ffffff;
+$navbar-fg: #16191f;
+
+/*-- scss:rules --*/
+
+:root {
+  --ink: #16191f;
+  --slate: #5b6470;
+  --line: #e6e8ec;
+  --tier-receptor: #7c3aed;
+  --tier-transducer: #06b6d4;
+  --tier-effector: #f43f5e;
+}
+
+html { font-size: 18px; }
+body { -webkit-font-smoothing: antialiased; }
+
+h1, h2, h3, .navbar-title { letter-spacing: -0.015em; }
+h2 { margin-top: 2.8rem; padding-top: 0.6rem; }
+h3 { margin-top: 1.6rem; }
+p { margin-bottom: 1.05rem; }
+
+.navbar { border-bottom: 1px solid var(--line); }
+.navbar-brand img { height: 26px; }
+
+code {
+  color: #334155;
+  background: #f1f5f9;
+  padding: 0.05em 0.32em;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+/* ---------- Hero ---------- */
+.hero { margin: 1rem 0 3.2rem; }
+.hero .eyebrow {
+  font-family: $font-family-monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 0.7rem 0 1rem;
+  max-width: 20ch;
+}
+.hero .lede {
+  font-size: 1.22rem;
+  color: #2c333d;
+  max-width: 60ch;
+  line-height: 1.5;
+}
+.hero .cta {
+  margin-top: 1.7rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn-primary, .btn-ghost {
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 0.62rem 1.2rem;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: #000; color: #fff; }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* ---------- Signature: example traced set ---------- */
+.trace {
+  margin-top: 2.8rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.3rem 1.4rem 1.45rem;
+  background: linear-gradient(180deg, #fbfcfd 0%, #ffffff 60%);
+}
+.trace .trace-head {
+  font-family: $font-family-monospace;
+  font-size: 0.84rem;
+  color: var(--slate);
+  margin-bottom: 1rem;
+}
+.trace .trace-head .setname { color: var(--ink); font-weight: 500; }
+.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 620px) { .tiers { grid-template-columns: 1fr; } }
+.tier { border-top: 3px solid var(--line); padding-top: 0.6rem; }
+.tier.r { border-color: var(--tier-receptor); }
+.tier.t { border-color: var(--tier-transducer); }
+.tier.e { border-color: var(--tier-effector); }
+.tier .tlabel {
+  font-family: $font-family-monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+.tier.r .tlabel { color: var(--tier-receptor); }
+.tier.t .tlabel { color: var(--tier-transducer); }
+.tier.e .tlabel { color: var(--tier-effector); }
+.gene {
+  font-family: $font-family-monospace;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 0 0.4rem 0.45rem 0;
+  color: var(--ink);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.12s ease;
+}
+.gene:hover { border-bottom-color: var(--slate); }
+.trace .pmid {
+  margin-top: 1rem;
+  font-family: $font-family-monospace;
+  font-size: 0.84rem;
+  color: var(--slate);
+}
+.trace .pmid a { text-decoration: none; }
+.trace .pmid a:hover { text-decoration: underline; }
+.trace .paper-title {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.4;
+  min-height: 1.1em;
+}
+.trace .click-note {
+  margin-top: 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+}
+.trace .trace-foot {
+  margin-top: 0.95rem;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+/* ---------- Stat strip ---------- */
+.statstrip {
+  display: flex; flex-wrap: wrap; gap: 2.6rem;
+  margin: 2.6rem 0 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.stat .num { font-family: $headings-font-family; font-size: 2rem; font-weight: 600; line-height: 1; }
+.stat .cap { font-size: 0.9rem; color: var(--slate); margin-top: 0.35rem; }
+
+/* ---------- Feature list ---------- */
+.feat { margin-top: 1.3rem; }
+.feat h3 { font-size: 1.12rem; margin-bottom: 0.25rem; }
+.feat p { color: var(--ink); margin-bottom: 1.2rem; }
+
+/* ---------- Browse: search + linked set list ---------- */
+.setsearch {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  width: 340px;
+  max-width: 100%;
+  margin: 1.1rem 0 0.4rem;
+}
+.setcols {
+  column-count: 3;
+  column-gap: 1.8rem;
+  margin: 0.8rem 0 0.5rem;
+}
+@media (max-width: 720px) { .setcols { column-count: 2; } }
+@media (max-width: 480px) { .setcols { column-count: 1; } }
+.setlink {
+  display: block;
+  break-inside: avoid;
+  font-family: $font-family-monospace;
+  font-size: 0.86rem;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  line-height: 1.4;
+}
+.setlink:hover { color: var(--tier-receptor); }
+.setlink.active { color: var(--tier-receptor); font-weight: 600; }
+.setlink .ct { color: var(--slate); font-size: 0.78rem; }
+
+/* ---------- Browse: full table ---------- */
+.setT {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+}
+.setT th {
+  text-align: left;
+  font-family: $font-family-monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 2px solid var(--line);
+  padding: 0.5rem 0.7rem;
+}
+.setT td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.45rem 0.7rem;
+  vertical-align: top;
+}
+.setT td.mono { font-family: $font-family-monospace; font-weight: 500; }
+.setT a { color: var(--tier-receptor); text-decoration: none; }
+.setT a:hover { text-decoration: underline; }
+
+.set-feedback {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.set-feedback .muted { font-size: 0.85rem; }
+
+.set-detail-head { font-family: $font-family-monospace; font-weight: 500; margin: 0.4rem 0 0.2rem; }
+
+/* ---------- Browse table tier pills ---------- */
+.tierpill {
+  font-family: $font-family-monospace;
+  font-size: 0.74rem;
+  padding: 0.06em 0.5em;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+.tierpill.r { background: var(--tier-receptor); }
+.tierpill.t { background: var(--tier-transducer); }
+.tierpill.e { background: var(--tier-effector); }
+
+/* ---------- Browse table regulatory role pills ---------- */
+/* Outlined/tinted, to read as a different category from the solid tier pills. */
+.rolepill {
+  font-size: 0.72rem;
+  padding: 0.06em 0.5em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.rolepill.inh { color: #b91c1c; background: rgba(220, 38, 38, 0.10); }
+.rolepill.act { color: #047857; background: rgba(5, 150, 105, 0.10); }
+.rolepill.ctx { color: #b45309; background: rgba(217, 119, 6, 0.10); }
+
+/* ---------- Browse table cell-type chips ---------- */
+/* Lineage colour carried in --ctc; tinted fill + dot. Supports several per cell. */
+.ctpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.72rem;
+  padding: 0.06em 0.55em 0.06em 0.45em;
+  margin: 0.1em 0.25em 0.1em 0;
+  border-radius: 999px;
+  white-space: nowrap;
+  color: inherit;
+  border: 1px solid color-mix(in srgb, var(--ctc) 40%, transparent);
+  background: color-mix(in srgb, var(--ctc) 12%, transparent);
+}
+.ctpill::before {
+  content: "";
+  inline-size: 0.5em;
+  block-size: 0.5em;
+  border-radius: 50%;
+  background: var(--ctc);
+  flex: 0 0 auto;
+}
+.ctpill.pan { opacity: 0.7; }
+
+.muted { color: var(--slate); }

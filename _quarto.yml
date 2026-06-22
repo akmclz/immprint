@@ -1,0 +1,57 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - "data/*.csv"
+    - "data/*.json"
+    - "LICENSE"
+
+website:
+  title: "ImmPrint"
+  description: "A curated, citation-backed collection of immune signalling gene sets."
+  search: false
+  site-url: https://akmclz.github.io/immprint
+  repo-url: https://github.com/akmclz/immprint
+  favicon: favicon.svg
+  navbar:
+    pinned: true
+    background: light
+    logo: logo.svg
+    logo-alt: "ImmPrint"
+    left:
+      - text: "Browse"
+        href: browse.qmd
+      - text: "Rationale"
+        href: rationale.qmd
+      - text: "Access"
+        href: access.qmd
+      - text: "Changelog"
+        href: changelog.qmd
+      - text: "Cite"
+        href: cite.qmd
+    right:
+      - icon: github
+        href: https://github.com/akmclz/immprint
+        aria-label: "GitHub repository"
+  page-footer:
+    border: true
+    left: |
+      **ImmPrint** &middot; collection v0.2.0-alpha
+    center: |
+      Curated by Anthony K. McLean
+    right: |
+      [CC&nbsp;BY&nbsp;4.0](LICENSE) &middot; [GitHub](https://github.com/akmclz/immprint)
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: true
+    toc-depth: 3
+    fontsize: 1.0625rem
+    anchor-sections: true
+    grid:
+      body-width: 900px
+    code-copy: false
+    link-external-newwindow: true

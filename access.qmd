@@ -1,0 +1,88 @@
+---
+title: "Access"
+---
+
+ImmPrint is the data, and you can reach it however suits your workflow. Every
+route serves the same versioned snapshot.
+
+## R, the `immprintr` package
+
+The [`immprintr`](https://akmclz.github.io/immprintr/) package delivers ImmPrint as
+a tidy tibble, in the spirit of `msigdbr`.
+
+```r
+# install.packages("remotes")
+remotes::install_github("akmclz/immprintr")
+
+library(immprintr)
+
+ip <- immprintr()                       # latest snapshot as a tidy tibble
+immprintr_versions()                    # which snapshots are bundled
+
+# Build a signature for scoring (pan core plus a cell type refinement)
+immprintr_signature("IMMPRINT_TGFB_SIGNALLING", "Fibroblast")
+
+# Many signatures as a named list, ready for UCell or AddModuleScore
+immprintr_signatures(c("IMMPRINT_IFNG_SIGNALLING", "IMMPRINT_TNF_SIGNALLING"))
+```
+
+## Raw data, CSV or JSON
+
+The canonical snapshot is published here for direct, language-agnostic use:
+
+[Download CSV](data/immprint_0.2.0-alpha.csv){.btn-ghost download="immprint_0.2.0-alpha.csv"}
+[Download JSON](data/immprint_0.2.0-alpha.json){.btn-ghost download="immprint_0.2.0-alpha.json"}
+
+Both are also versioned in the [repository](https://github.com/akmclz/immprint)
+under `data/`.
+
+### What each column means
+
+The CSV has one row per gene set, cell type and gene membership:
+
+| column | meaning |
+|---|---|
+| `gene_set` | ImmPrint set name, e.g. `IMMPRINT_IFNG_SIGNALLING` |
+| `gene_symbol` | HGNC gene symbol |
+| `pathway_level` | signalling tier: 1 = Receptor, 2 = Transducer, 3 = Effector |
+| `regulatory_role` | the gene's effect on its own pathway: `none` (a forward component or output), `inhibitory`, `activating` (genuine positive feedback) or `context_dependent` |
+| `cell_type` | responding lineage; several lineages are semicolon-delimited (e.g. `Epithelial; Fibroblast`); `pan` for the cell type-agnostic core |
+| `pmids` | semicolon-delimited PubMed ID(s) supporting the membership |
+| `reference_gene_set` | corroborating MSigDB set, where available |
+
+The JSON carries the same fields per record (with `pmids` as an array and an added
+`pathway_level_label`), under a small header giving `version`, `n_gene_sets` and
+`n_pairs`.
+
+## Python
+
+There is no dedicated package yet, so read the published files directly:
+
+```python
+import pandas as pd
+
+url = "https://akmclz.github.io/immprint/data/immprint_0.2.0-alpha.csv"
+ip = pd.read_csv(url)
+
+# genes of one set, by tier
+ip.query("gene_set == 'IMMPRINT_IFNG_SIGNALLING'")[["gene_symbol", "pathway_level"]]
+
+# pan core plus a lineage refinement; cell_type may list several lineages,
+# so split on ";" rather than matching the whole string
+def has_lineage(ct, want):
+    parts = [p.strip() for p in str(ct).split(";")]
+    return "pan" in parts or want in parts
+
+tgfb_fibro = ip[(ip.gene_set == "IMMPRINT_TGFB_SIGNALLING")
+                & ip.cell_type.apply(has_lineage, want="Fibroblast")]["gene_symbol"]
+
+# a named dict of signatures
+sigs = ip.groupby("gene_set")["gene_symbol"].apply(list).to_dict()
+```
+
+## Versioning
+
+Every snapshot is immutable. Pin the version your analysis used, both the package
+`immprintr(version = "0.2.0-alpha")` and the raw files are version-stamped, so
+results stay reproducible. See the [changelog](changelog.qmd) and [how to
+cite](cite.qmd).

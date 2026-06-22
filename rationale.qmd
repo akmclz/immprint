@@ -1,0 +1,162 @@
+---
+title: "Curation rationale"
+---
+
+ImmPrint exists to score immune processes in transcriptomic data cleanly, and in
+a way you can defend. This page sets out the curatorial decisions that shape the
+collection.
+
+## Why not just use Hallmark, Reactome or GO?
+
+General-purpose collections are invaluable, but they are built for breadth rather than
+for clean immune *signatures*. Used directly for module scoring, they tend to
+share a few recurring problems:
+
+- **Mixed granularity.** A single set may fold a receptor, its entire transducer
+  cascade, generic stress machinery and dozens of loosely associated targets into
+  one undifferentiated list.
+- **Ligand contamination.** Signalling sets frequently include the very ligand
+  that triggers the pathway, either for completeness or to account for autocrine
+  signalling in bulk RNA-seq data. However, single-cell RNA-seq allows
+  ligand-producing and responding cells to be distinguished. In this context, a
+  gene set that carries its own ligand pollutes the score of the cell you actually
+  care about.
+- **Non-specific drivers.** Stress and activation-response genes (MAPK, ATF, JUN,
+  FOS, HSP) recur across many sets and inflate co-occurrence without adding pathway
+  specificity.
+- **Unsourced membership.** Membership is rarely traceable to a specific paper
+  linking *that gene* to *that pathway*.
+
+## Principle 1 - Mechanistic specificity
+
+Each set aims to capture a single, mechanistically coherent process. Ubiquitous
+machinery that carries no pathway-specific information (ribosomal proteins,
+proteasome subunits, ubiquitination machinery, core housekeeping genes) is
+excluded from every set. The test for each candidate gene is not "is it expressed
+when this pathway is active?" but "does its expression *specifically* mark this
+process?"
+
+## Principle 2 - Inducer and responder separation
+
+The most important and most context-dependent rule. A pathway's own ligand is
+**excluded from its own signalling set**, because the ligand reports on the
+*sending* cell rather than the responding one. The same molecule is **kept** wherever it
+is a genuine *output* of the process being measured.
+
+So interferon-gamma is treated differently by context: `IFNG` is **not** a member
+of `IMMPRINT_IFNG_SIGNALLING`, but it **is** a legitimate effector of
+`IMMPRINT_TYPE1_RESPONSE`. The same logic removes `IL2` from
+`IMMPRINT_IL2_SIGNALLING` and `TNF` from `IMMPRINT_TNF_SIGNALLING`, while leaving
+receptors, transducers and downstream effectors in place.
+
+## Principle 3 - Focus on the signal-receiving cell
+
+A generalisation of Principle 2: a set describes the cell *receiving* a signal or
+*enacting* a process rather than the cell sending it. The checkpoint sets make this
+concrete. The inhibitory-receptor sets contain the receptor and its intrinsic
+signalling apparatus rather than the ligands presented by the opposing cell (the
+PD-L1/PD-L2 ligands are deliberately absent from `IMMPRINT_PD1_SIGNALLING`). A
+corollary, for the coinhibitory programmes: these sets contain only genes that are
+*induced or active* in the programme and exclude genes the pathway *represses*.
+
+## Principle 4 - Cell type specificity
+
+The same ligand drives different programmes in different cells. TGF-β, for
+instance, does very different things in T cells, fibroblasts and epithelium.
+ImmPrint layers cell type-specific effector refinements onto each pathway's shared
+`pan` core, so a cell is scored against the version that matches what it is. These
+refinements are added only where the divergence is real and well-documented.
+
+## Principle 5 - Citations you can follow
+
+Every gene set membership carries at least one PubMed ID. The citation should be
+primary literature that links that gene to that named pathway. A generic review is
+not enough. Where a gene appears in more than one set, each appearance is meant to be
+supported by a paper appropriate to that context.
+
+::: callout-note
+This is an alpha release. Citations are checked against PubMed where possible, but
+some may still need correcting. If you find a citation that does not support its
+membership, please [flag it on GitHub](https://github.com/akmclz/immprint/issues)
+so it can be fixed in the next version.
+:::
+
+## Principle 6 - Corroboration by MSigDB
+
+Where a gene's membership is corroborated by an assigned MSigDB reference gene set
+(from Hallmark, Reactome or GO:BP), that set is recorded in `reference_gene_set`. A
+blank entry means either the gene is not covered by any MSigDB counterparts or that
+there is no valid counterpart.
+
+## Principle 7 - Explicit family exclusions
+
+A few gene families are excluded from **all** sets by standing policy, because they
+are general stress or activation responders rather than pathway-specific markers:
+the `MAPK` families (`MAPK*`, `MAP2K*`, `MAP3K*`), and the `ATF`, `JUN`,
+`FOS` and `HSP` families. Excluding them keeps sets from collapsing toward a
+generic "this cell is activated" signal.
+
+## The signalling hierarchy annotation
+
+Separately from the principles above, every gene is annotated with a position in a
+three-tier signalling hierarchy (`pathway_level`):
+
+- <span style="color:var(--tier-receptor);font-weight:600">Receptor (1)</span>: the
+  sensor or input, meaning surface or intracellular receptors. For receptor-less
+  metabolic or structural sets, the entry tier is the substrate-import transporters
+  or the top driving transcription factor.
+- <span style="color:var(--tier-transducer);font-weight:600">Transducer (2)</span>:
+  kinases, adaptors and transcription factors acting at the signalling node (STATs,
+  IRFs, NF-κB, SMADs, master lineage TFs), plus core processing enzymes. Initiator
+  and inflammatory caspases sit here. The tier marks where a gene product acts, so
+  negative regulators that operate at this node (e.g. SOCS proteins and the
+  inhibitory SMADs) sit here too. Their direction is recorded separately by
+  `regulatory_role`.
+- <span style="color:var(--tier-effector);font-weight:600">Effector (3)</span>: the
+  output, meaning secreted cytokines and chemokines, cytotoxic and
+  antiviral/antimicrobial molecules, presented MHC, terminal metabolic complexes
+  and induced target-gene products. Executioner caspases sit here.
+
+The tiers are interpretive metadata rather than a scoring axis. You can subset a
+pathway by tier, but the effector tier is often small, so per-tier subsetting is
+best treated as optional. By design, antigen-receptor and inhibitory-checkpoint sets (TCR, BCR,
+CTLA4, PD1) carry no effector tier, since they are detection or inhibition modules
+that terminate at the transducer level.
+
+## The regulatory role annotation
+
+The tier locates a gene in the cascade; it does not say whether the gene drives the
+pathway or holds it back. That direction is recorded separately, per membership, in
+`regulatory_role`:
+
+- `none`: a forward component or a faithful output of the pathway. This is most
+  genes, including receptors, transducers and effector products.
+- `inhibitory`: a negative regulator of the pathway, such as the SOCS and CISH
+  negative-feedback proteins, the inhibitory SMADs, the Wnt destruction complex,
+  decoy receptors and the anti-apoptotic BCL2 guards.
+- `activating`: a genuine positive-feedback amplifier, reserved for the rare gene
+  that feeds back to boost its own pathway rather than merely transmitting it.
+- `context_dependent`: the sign genuinely varies, as for `PTPN11` in cytokine
+  signalling.
+
+The sign is judged relative to the gene's *own* pathway, which is why it lives on
+the membership rather than the gene. `IL1RN` is a faithful output of IL-10 even
+though it antagonises IL-1, so in `IMMPRINT_IL10_SIGNALLING` it is `none`, not a
+negative regulator. `BCL2` opposes intrinsic apoptosis but is a survival output of
+IL-7 and IL-15, so it is `inhibitory` in one set and `none` in the others. `PTPN11`
+enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere.
+
+## Versioning
+
+Each collection is an immutable, versioned snapshot. The gene sets behind a
+published analysis can be traced back to the exact definitions used, the way an
+MSigDB release is pinned. New curation ships as a new version; released versions
+are never altered. See the [changelog](changelog.qmd).
+
+## Intended use
+
+ImmPrint is built for **module scoring** of immune processes, reading out the
+activity of specific, mechanistically defined programmes across cell types,
+tissues and disease states. The sets are plain, unweighted gene lists, so they
+work with any rank-based scoring method (UCell, AUCell, singscore, ssGSEA) and with
+average-based methods like `Seurat::AddModuleScore`. See [Access](access.qmd) to get started.
