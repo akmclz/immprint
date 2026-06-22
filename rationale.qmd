@@ -12,20 +12,19 @@ General-purpose collections are invaluable, but they are built for breadth rathe
 for clean immune *signatures*. Used directly for module scoring, they tend to
 share a few recurring problems:
 
-- **Mixed granularity.** A single set may fold a receptor, its entire transducer
-  cascade, generic stress machinery and dozens of loosely associated targets into
-  one undifferentiated list.
+- **Non-specific drivers.** Stress and activation-response genes (MAPK, ATF, JUN,
+  FOS, HSP) recur across many sets, dampening the specificity of module scores.
 - **Ligand contamination.** Signalling sets frequently include the very ligand
   that triggers the pathway, either for completeness or to account for autocrine
   signalling in bulk RNA-seq data. However, single-cell RNA-seq allows
   ligand-producing and responding cells to be distinguished. In this context, a
   gene set that carries its own ligand pollutes the score of the cell you actually
   care about.
-- **Non-specific drivers.** Stress and activation-response genes (MAPK, ATF, JUN,
-  FOS, HSP) recur across many sets and inflate co-occurrence without adding pathway
-  specificity.
+- **No internal structure.** A single set may fold a receptor, its entire transducer
+  cascade, generic stress machinery and dozens of loosely associated targets into
+  one undifferentiated list.
 - **Unsourced membership.** Membership is rarely traceable to a specific paper
-  linking *that gene* to *that pathway*.
+  linking *that* gene to *that* pathway.
 
 ## Principle 1 - Mechanistic specificity
 
