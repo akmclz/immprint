@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Browse the gene sets – ImmPrint</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c11abc8cc2b203d8167704c6b3f98431.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-609c7a530328e9d83d59ef7f5c0cee56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./logo.svg" alt="ImmPrint" class="navbar-logo light-content">
+    <img src="./logo.svg" alt="ImmPrint" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ImmPrint</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./browse.html" aria-current="page"> 
+<span class="menu-text">Browse</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./rationale.html"> 
+<span class="menu-text">Rationale</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./access.html"> 
+<span class="menu-text">Access</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./changelog.html"> 
+<span class="menu-text">Changelog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cite.html"> 
+<span class="menu-text">Cite</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/akmclz/immprint"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Browse the gene sets</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Pick a gene set to see its genes, signalling tiers and citations. Use the search box to filter the list. PMIDs link to PubMed.</p>
+<p><a href="data/immprint_0.2.0-alpha.csv" class="btn-ghost" download="immprint_0.2.0-alpha.csv">Download CSV</a> <a href="data/immprint_0.2.0-alpha.json" class="btn-ghost" download="immprint_0.2.0-alpha.json">Download JSON</a></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="17" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/immprint_0.2.0-alpha.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="21" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>setSummary <span class="op">=</span> {</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> byset <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()<span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> d <span class="kw">of</span> data) {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>byset<span class="op">.</span><span class="fu">has</span>(d<span class="op">.</span><span class="at">gene_set</span>)) byset<span class="op">.</span><span class="fu">set</span>(d<span class="op">.</span><span class="at">gene_set</span><span class="op">,</span> <span class="kw">new</span> <span class="bu">Set</span>())<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    byset<span class="op">.</span><span class="fu">get</span>(d<span class="op">.</span><span class="at">gene_set</span>)<span class="op">.</span><span class="fu">add</span>(d<span class="op">.</span><span class="at">gene_symbol</span>)<span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(byset<span class="op">,</span> ([name<span class="op">,</span> genes]) <span class="kw">=&gt;</span> ({ name<span class="op">,</span> <span class="dt">n</span><span class="op">:</span> genes<span class="op">.</span><span class="at">size</span> }))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">name</span>))<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="34" data-source-offset="-0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>mutable selectedSet <span class="op">=</span> <span class="kw">null</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>mutable listQuery <span class="op">=</span> <span class="st">""</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="38" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co">// Search box in its own cell so it keeps focus while the list filters</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>filterBox <span class="op">=</span> {</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> inp <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;input type="search" placeholder="Filter gene sets" class="setsearch" /&gt;`</span><span class="op">;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  inp<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> () <span class="kw">=&gt;</span> { mutable listQuery <span class="op">=</span> inp<span class="op">.</span><span class="at">value</span><span class="op">;</span> }<span class="op">;</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> inp<span class="op">;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="47" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 46;"><span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co">// Gene set list: linked text, three columns, alphabetical, filtered by the search</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ql <span class="op">=</span> (listQuery <span class="op">||</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> sets <span class="op">=</span> setSummary<span class="op">.</span><span class="fu">filter</span>(s <span class="kw">=&gt;</span> <span class="op">!</span>ql <span class="op">||</span> s<span class="op">.</span><span class="at">name</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(ql))<span class="op">;</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> el <span class="op">=</span> sets<span class="op">.</span><span class="at">length</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div class="setcols"&gt;</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>sets<span class="op">.</span><span class="fu">map</span>(s <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;a class=</span><span class="sc">${</span><span class="st">"setlink"</span> <span class="op">+</span> (s<span class="op">.</span><span class="at">name</span> <span class="op">===</span> selectedSet <span class="op">?</span> <span class="st">" active"</span> <span class="op">:</span> <span class="st">""</span>)<span class="sc">}</span><span class="vs"> data-set="</span><span class="sc">${</span>s<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>s<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> &lt;span class="ct"&gt;</span><span class="sc">${</span>s<span class="op">.</span><span class="at">n</span><span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/a&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;`</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p class="muted" style="margin-top:0.8rem"&gt;No gene set matches that filter.&lt;/p&gt;`</span><span class="op">;</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  el<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"click"</span><span class="op">,</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> a <span class="op">=</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">closest</span>(<span class="st">".setlink"</span>)<span class="op">;</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (a <span class="op">&amp;&amp;</span> a<span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">set</span>) {</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>      mutable selectedSet <span class="op">=</span> a<span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">set</span><span class="op">;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> t <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"set-detail"</span>)<span class="op">;</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (t) t<span class="op">.</span><span class="fu">scrollIntoView</span>({ <span class="dt">behavior</span><span class="op">:</span> <span class="st">"smooth"</span><span class="op">,</span> <span class="dt">block</span><span class="op">:</span> <span class="st">"start"</span> })<span class="op">;</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span> <span class="dv">60</span>)<span class="op">;</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> el<span class="op">;</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="71" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="co">// Selected-set table: fully displayed, no scroll bar</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>selectedSet) {</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;p class="muted" style="margin-top:1.6rem"&gt;Select a gene set above to view its genes, tiers and citations.&lt;/p&gt;`</span><span class="op">;</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> rows <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">gene_set</span> <span class="op">===</span> selectedSet)<span class="op">.</span><span class="fu">slice</span>()<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> t <span class="op">=</span> (<span class="op">+</span>a<span class="op">.</span><span class="at">pathway_level</span>) <span class="op">-</span> (<span class="op">+</span>b<span class="op">.</span><span class="at">pathway_level</span>)<span class="op">;</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (t) <span class="cf">return</span> t<span class="op">;</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> ak <span class="op">=</span> a<span class="op">.</span><span class="at">cell_type</span> <span class="op">===</span> <span class="st">"pan"</span> <span class="op">?</span> <span class="st">""</span> <span class="op">:</span> a<span class="op">.</span><span class="at">cell_type</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bk <span class="op">=</span> b<span class="op">.</span><span class="at">cell_type</span> <span class="op">===</span> <span class="st">"pan"</span> <span class="op">?</span> <span class="st">""</span> <span class="op">:</span> b<span class="op">.</span><span class="at">cell_type</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ak<span class="op">.</span><span class="fu">localeCompare</span>(bk)<span class="op">;</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> body <span class="op">=</span> [</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gene set: "</span> <span class="op">+</span> selectedSet<span class="op">,</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>    <span class="st">"### Genes to add"</span><span class="op">,</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    <span class="st">"### Genes to remove"</span><span class="op">,</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    <span class="st">"### Citation amendments"</span><span class="op">,</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="st">"### Other notes"</span><span class="op">,</span> <span class="st">""</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)<span class="op">;</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> issueUrl <span class="op">=</span> <span class="st">"https://github.com/akmclz/immprint/issues/new?title="</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> <span class="pp">encodeURIComponent</span>(<span class="st">"Feedback: "</span> <span class="op">+</span> selectedSet)</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> <span class="st">"&amp;body="</span> <span class="op">+</span> <span class="pp">encodeURIComponent</span>(body)<span class="op">;</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div id="set-detail" style="margin-top:1.8rem"&gt;</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="set-detail-head" style="font-size:1.05rem"&gt;</span><span class="sc">${</span>selectedSet<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p class="muted" style="margin:0.2rem 0 0.7rem"&gt;</span><span class="sc">${</span>rows<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> genes&lt;/p&gt;</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">tableFor</span>(rows)<span class="sc">}</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="set-feedback"&gt;</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;a class="btn-ghost" href=</span><span class="sc">${</span>issueUrl<span class="sc">}</span><span class="vs"> target="_blank" rel="noopener"&gt;Suggest changes to this gene set&lt;/a&gt;</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="muted"&gt;Opens a pre-filled GitHub issue.&lt;/span&gt;</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="107" data-source-offset="-0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>tierLabel <span class="op">=</span> ({ <span class="st">"1"</span><span class="op">:</span> <span class="st">"Receptor"</span><span class="op">,</span> <span class="st">"2"</span><span class="op">:</span> <span class="st">"Transducer"</span><span class="op">,</span> <span class="st">"3"</span><span class="op">:</span> <span class="st">"Effector"</span> })</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>tierClass <span class="op">=</span> ({ <span class="st">"1"</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="st">"2"</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="st">"3"</span><span class="op">:</span> <span class="st">"e"</span> })</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>roleLabel <span class="op">=</span> ({ <span class="dt">inhibitory</span><span class="op">:</span> <span class="st">"Inhibitory"</span><span class="op">,</span> <span class="dt">activating</span><span class="op">:</span> <span class="st">"Activating"</span><span class="op">,</span> <span class="dt">context_dependent</span><span class="op">:</span> <span class="st">"Context-dependent"</span> })</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>roleClass <span class="op">=</span> ({ <span class="dt">inhibitory</span><span class="op">:</span> <span class="st">"inh"</span><span class="op">,</span> <span class="dt">activating</span><span class="op">:</span> <span class="st">"act"</span><span class="op">,</span> <span class="dt">context_dependent</span><span class="op">:</span> <span class="st">"ctx"</span> })</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">roleCell</span>(r) {</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v <span class="op">=</span> (r <span class="op">??</span> <span class="st">"none"</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">;</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (v <span class="op">===</span> <span class="st">"none"</span> <span class="op">||</span> <span class="op">!</span>roleLabel[v]) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span class="muted"&gt;·&lt;/span&gt;`</span><span class="op">;</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span class="rolepill </span><span class="sc">${</span>roleClass[v]<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>roleLabel[v]<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">;</span></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">pmidCell</span>(p) {</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ids <span class="op">=</span> (p <span class="op">??</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">";"</span>)<span class="op">.</span><span class="fu">map</span>(s <span class="kw">=&gt;</span> s<span class="op">.</span><span class="fu">trim</span>())<span class="op">.</span><span class="fu">filter</span>(<span class="bu">Boolean</span>)<span class="op">;</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span><span class="sc">${</span>ids<span class="op">.</span><span class="fu">map</span>((id<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span><span class="sc">${</span>i <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;a href=</span><span class="sc">${</span><span class="st">"https://pubmed.ncbi.nlm.nih.gov/"</span> <span class="op">+</span> id <span class="op">+</span> <span class="st">"/"</span><span class="sc">}</span><span class="vs"> target="_blank" rel="noopener"&gt;</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>cellTypeColours <span class="op">=</span> ({</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pan"</span><span class="op">:</span> <span class="st">"#94A3B8"</span><span class="op">,</span></span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"T cell"</span><span class="op">:</span> <span class="st">"#22C55E"</span><span class="op">,</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  <span class="st">"B cell"</span><span class="op">:</span> <span class="st">"#38BDF8"</span><span class="op">,</span></span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NK cell"</span><span class="op">:</span> <span class="st">"#F97316"</span><span class="op">,</span></span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Epithelial"</span><span class="op">:</span> <span class="st">"#EC4899"</span><span class="op">,</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Monocyte/Macrophage"</span><span class="op">:</span> <span class="st">"#8B5CF6"</span><span class="op">,</span></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endothelial"</span><span class="op">:</span> <span class="st">"#EF4444"</span><span class="op">,</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Fibroblast"</span><span class="op">:</span> <span class="st">"#D97706"</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a><span class="co">// cell_type may hold several lineages, ";"-separated; render one chip each.</span></span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">cellTypeCell</span>(v) {</span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> (v <span class="op">??</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">.</span><span class="fu">split</span>(<span class="st">";"</span>)<span class="op">.</span><span class="fu">map</span>(s <span class="kw">=&gt;</span> s<span class="op">.</span><span class="fu">trim</span>())<span class="op">.</span><span class="fu">filter</span>(<span class="bu">Boolean</span>)<span class="op">;</span></span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>parts<span class="op">.</span><span class="at">length</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span class="muted"&gt;·&lt;/span&gt;`</span><span class="op">;</span></span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span><span class="sc">${</span>parts<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> {</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> c <span class="op">=</span> cellTypeColours[p] <span class="op">??</span> <span class="st">"#94A3B8"</span><span class="op">;</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> cls <span class="op">=</span> <span class="st">"ctpill"</span> <span class="op">+</span> (p <span class="op">===</span> <span class="st">"pan"</span> <span class="op">?</span> <span class="st">" pan"</span> <span class="op">:</span> <span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span class=</span><span class="sc">${</span>cls<span class="sc">}</span><span class="vs"> style=</span><span class="sc">${</span><span class="st">"--ctc: "</span> <span class="op">+</span> c<span class="sc">}</span><span class="vs">&gt;</span><span class="sc">${</span>p<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">;</span></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  })<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">tableFor</span>(rows) {</span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;table class="setT"&gt;</span></span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;thead&gt;&lt;tr&gt;</span></span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;th&gt;Gene&lt;/th&gt;&lt;th&gt;Tier&lt;/th&gt;&lt;th&gt;Regulatory role&lt;/th&gt;&lt;th&gt;Cell type&lt;/th&gt;&lt;th&gt;PMID(s)&lt;/th&gt;&lt;th&gt;MSigDB reference&lt;/th&gt;</span></span>
+<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tr&gt;&lt;/thead&gt;</span></span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tbody&gt;</span></span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>rows<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;tr&gt;</span></span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td class="mono"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">gene_symbol</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td&gt;&lt;span class="tierpill </span><span class="sc">${</span>tierClass[d<span class="op">.</span><span class="at">pathway_level</span>] <span class="op">??</span> <span class="st">""</span><span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>tierLabel[d<span class="op">.</span><span class="at">pathway_level</span>] <span class="op">??</span> d<span class="op">.</span><span class="at">pathway_level</span><span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/td&gt;</span></span>
+<span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td&gt;</span><span class="sc">${</span><span class="fu">roleCell</span>(d<span class="op">.</span><span class="at">regulatory_role</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td&gt;</span><span class="sc">${</span><span class="fu">cellTypeCell</span>(d<span class="op">.</span><span class="at">cell_type</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td&gt;</span><span class="sc">${</span><span class="fu">pmidCell</span>(d<span class="op">.</span><span class="at">pmids</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb7-158"><a href="#cb7-158" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;td&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">reference_gene_set</span> <span class="op">?</span> d<span class="op">.</span><span class="at">reference_gene_set</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;span class="muted"&gt;·&lt;/span&gt;`</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/tr&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb7-160"><a href="#cb7-160" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tbody&gt;</span></span>
+<span id="cb7-161"><a href="#cb7-161" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/table&gt;`</span><span class="op">;</span></span>
+<span id="cb7-162"><a href="#cb7-162" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBGaWxlQXR0YWNobWVudChcImRhdGEvaW1tcHJpbnRfMC4yLjAtYWxwaGEuY3N2XCIpLmNzdigpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzZXRTdW1tYXJ5ID0ge1xuICBjb25zdCBieXNldCA9IG5ldyBNYXAoKTtcbiAgZm9yIChjb25zdCBkIG9mIGRhdGEpIHtcbiAgICBpZiAoIWJ5c2V0LmhhcyhkLmdlbmVfc2V0KSkgYnlzZXQuc2V0KGQuZ2VuZV9zZXQsIG5ldyBTZXQoKSk7XG4gICAgYnlzZXQuZ2V0KGQuZ2VuZV9zZXQpLmFkZChkLmdlbmVfc3ltYm9sKTtcbiAgfVxuICByZXR1cm4gQXJyYXkuZnJvbShieXNldCwgKFtuYW1lLCBnZW5lc10pID0+ICh7IG5hbWUsIG46IGdlbmVzLnNpemUgfSkpXG4gICAgLnNvcnQoKGEsIGIpID0+IGEubmFtZS5sb2NhbGVDb21wYXJlKGIubmFtZSkpO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibXV0YWJsZSBzZWxlY3RlZFNldCA9IG51bGxcbm11dGFibGUgbGlzdFF1ZXJ5ID0gXCJcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gU2VhcmNoIGJveCBpbiBpdHMgb3duIGNlbGwgc28gaXQga2VlcHMgZm9jdXMgd2hpbGUgdGhlIGxpc3QgZmlsdGVyc1xuZmlsdGVyQm94ID0ge1xuICBjb25zdCBpbnAgPSBodG1sYDxpbnB1dCB0eXBlPVwic2VhcmNoXCIgcGxhY2Vob2xkZXI9XCJGaWx0ZXIgZ2VuZSBzZXRzXCIgY2xhc3M9XCJzZXRzZWFyY2hcIiAvPmA7XG4gIGlucC5vbmlucHV0ID0gKCkgPT4geyBtdXRhYmxlIGxpc3RRdWVyeSA9IGlucC52YWx1ZTsgfTtcbiAgcmV0dXJuIGlucDtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIEdlbmUgc2V0IGxpc3Q6IGxpbmtlZCB0ZXh0LCB0aHJlZSBjb2x1bW5zLCBhbHBoYWJldGljYWwsIGZpbHRlcmVkIGJ5IHRoZSBzZWFyY2hcbntcbiAgY29uc3QgcWwgPSAobGlzdFF1ZXJ5IHx8IFwiXCIpLnRyaW0oKS50b0xvd2VyQ2FzZSgpO1xuICBjb25zdCBzZXRzID0gc2V0U3VtbWFyeS5maWx0ZXIocyA9PiAhcWwgfHwgcy5uYW1lLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocWwpKTtcbiAgY29uc3QgZWwgPSBzZXRzLmxlbmd0aFxuICAgID8gaHRtbGA8ZGl2IGNsYXNzPVwic2V0Y29sc1wiPlxuICAgICAgICAke3NldHMubWFwKHMgPT4gaHRtbGA8YSBjbGFzcz0ke1wic2V0bGlua1wiICsgKHMubmFtZSA9PT0gc2VsZWN0ZWRTZXQgPyBcIiBhY3RpdmVcIiA6IFwiXCIpfSBkYXRhLXNldD1cIiR7cy5uYW1lfVwiPiR7cy5uYW1lfSA8c3BhbiBjbGFzcz1cImN0XCI+JHtzLm59PC9zcGFuPjwvYT5gKX1cbiAgICAgIDwvZGl2PmBcbiAgICA6IGh0bWxgPHAgY2xhc3M9XCJtdXRlZFwiIHN0eWxlPVwibWFyZ2luLXRvcDowLjhyZW1cIj5ObyBnZW5lIHNldCBtYXRjaGVzIHRoYXQgZmlsdGVyLjwvcD5gO1xuICBlbC5hZGRFdmVudExpc3RlbmVyKFwiY2xpY2tcIiwgKGUpID0+IHtcbiAgICBjb25zdCBhID0gZS50YXJnZXQuY2xvc2VzdChcIi5zZXRsaW5rXCIpO1xuICAgIGlmIChhICYmIGEuZGF0YXNldC5zZXQpIHtcbiAgICAgIG11dGFibGUgc2VsZWN0ZWRTZXQgPSBhLmRhdGFzZXQuc2V0O1xuICAgICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICAgIGNvbnN0IHQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcInNldC1kZXRhaWxcIik7XG4gICAgICAgIGlmICh0KSB0LnNjcm9sbEludG9WaWV3KHsgYmVoYXZpb3I6IFwic21vb3RoXCIsIGJsb2NrOiBcInN0YXJ0XCIgfSk7XG4gICAgICB9LCA2MCk7XG4gICAgfVxuICB9KTtcbiAgcmV0dXJuIGVsO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gU2VsZWN0ZWQtc2V0IHRhYmxlOiBmdWxseSBkaXNwbGF5ZWQsIG5vIHNjcm9sbCBiYXJcbntcbiAgaWYgKCFzZWxlY3RlZFNldCkge1xuICAgIHJldHVybiBodG1sYDxwIGNsYXNzPVwibXV0ZWRcIiBzdHlsZT1cIm1hcmdpbi10b3A6MS42cmVtXCI+U2VsZWN0IGEgZ2VuZSBzZXQgYWJvdmUgdG8gdmlldyBpdHMgZ2VuZXMsIHRpZXJzIGFuZCBjaXRhdGlvbnMuPC9wPmA7XG4gIH1cbiAgY29uc3Qgcm93cyA9IGRhdGEuZmlsdGVyKGQgPT4gZC5nZW5lX3NldCA9PT0gc2VsZWN0ZWRTZXQpLnNsaWNlKCkuc29ydCgoYSwgYikgPT4ge1xuICAgIGNvbnN0IHQgPSAoK2EucGF0aHdheV9sZXZlbCkgLSAoK2IucGF0aHdheV9sZXZlbCk7XG4gICAgaWYgKHQpIHJldHVybiB0O1xuICAgIGNvbnN0IGFrID0gYS5jZWxsX3R5cGUgPT09IFwicGFuXCIgPyBcIlwiIDogYS5jZWxsX3R5cGUudG9Mb3dlckNhc2UoKTtcbiAgICBjb25zdCBiayA9IGIuY2VsbF90eXBlID09PSBcInBhblwiID8gXCJcIiA6IGIuY2VsbF90eXBlLnRvTG93ZXJDYXNlKCk7XG4gICAgcmV0dXJuIGFrLmxvY2FsZUNvbXBhcmUoYmspO1xuICB9KTtcbiAgY29uc3QgYm9keSA9IFtcbiAgICBcIkdlbmUgc2V0OiBcIiArIHNlbGVjdGVkU2V0LCBcIlwiLFxuICAgIFwiIyMjIEdlbmVzIHRvIGFkZFwiLCBcIlwiLFxuICAgIFwiIyMjIEdlbmVzIHRvIHJlbW92ZVwiLCBcIlwiLFxuICAgIFwiIyMjIENpdGF0aW9uIGFtZW5kbWVudHNcIiwgXCJcIixcbiAgICBcIiMjIyBPdGhlciBub3Rlc1wiLCBcIlwiXG4gIF0uam9pbihcIlxcblwiKTtcbiAgY29uc3QgaXNzdWVVcmwgPSBcImh0dHBzOi8vZ2l0aHViLmNvbS9ha21jbHovaW1tcHJpbnQvaXNzdWVzL25ldz90aXRsZT1cIlxuICAgICsgZW5jb2RlVVJJQ29tcG9uZW50KFwiRmVlZGJhY2s6IFwiICsgc2VsZWN0ZWRTZXQpXG4gICAgKyBcIiZib2R5PVwiICsgZW5jb2RlVVJJQ29tcG9uZW50KGJvZHkpO1xuICByZXR1cm4gaHRtbGA8ZGl2IGlkPVwic2V0LWRldGFpbFwiIHN0eWxlPVwibWFyZ2luLXRvcDoxLjhyZW1cIj5cbiAgICA8ZGl2IGNsYXNzPVwic2V0LWRldGFpbC1oZWFkXCIgc3R5bGU9XCJmb250LXNpemU6MS4wNXJlbVwiPiR7c2VsZWN0ZWRTZXR9PC9kaXY+XG4gICAgPHAgY2xhc3M9XCJtdXRlZFwiIHN0eWxlPVwibWFyZ2luOjAuMnJlbSAwIDAuN3JlbVwiPiR7cm93cy5sZW5ndGh9IGdlbmVzPC9wPlxuICAgICR7dGFibGVGb3Iocm93cyl9XG4gICAgPGRpdiBjbGFzcz1cInNldC1mZWVkYmFja1wiPlxuICAgICAgPGEgY2xhc3M9XCJidG4tZ2hvc3RcIiBocmVmPSR7aXNzdWVVcmx9IHRhcmdldD1cIl9ibGFua1wiIHJlbD1cIm5vb3BlbmVyXCI+U3VnZ2VzdCBjaGFuZ2VzIHRvIHRoaXMgZ2VuZSBzZXQ8L2E+XG4gICAgICA8c3BhbiBjbGFzcz1cIm11dGVkXCI+T3BlbnMgYSBwcmUtZmlsbGVkIEdpdEh1YiBpc3N1ZS48L3NwYW4+XG4gICAgPC9kaXY+XG4gIDwvZGl2PmA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ0aWVyTGFiZWwgPSAoeyBcIjFcIjogXCJSZWNlcHRvclwiLCBcIjJcIjogXCJUcmFuc2R1Y2VyXCIsIFwiM1wiOiBcIkVmZmVjdG9yXCIgfSlcbnRpZXJDbGFzcyA9ICh7IFwiMVwiOiBcInJcIiwgXCIyXCI6IFwidFwiLCBcIjNcIjogXCJlXCIgfSlcblxucm9sZUxhYmVsID0gKHsgaW5oaWJpdG9yeTogXCJJbmhpYml0b3J5XCIsIGFjdGl2YXRpbmc6IFwiQWN0aXZhdGluZ1wiLCBjb250ZXh0X2RlcGVuZGVudDogXCJDb250ZXh0LWRlcGVuZGVudFwiIH0pXG5yb2xlQ2xhc3MgPSAoeyBpbmhpYml0b3J5OiBcImluaFwiLCBhY3RpdmF0aW5nOiBcImFjdFwiLCBjb250ZXh0X2RlcGVuZGVudDogXCJjdHhcIiB9KVxuXG5mdW5jdGlvbiByb2xlQ2VsbChyKSB7XG4gIGNvbnN0IHYgPSAociA/PyBcIm5vbmVcIikudG9TdHJpbmcoKTtcbiAgaWYgKHYgPT09IFwibm9uZVwiIHx8ICFyb2xlTGFiZWxbdl0pIHJldHVybiBodG1sYDxzcGFuIGNsYXNzPVwibXV0ZWRcIj7Ctzwvc3Bhbj5gO1xuICByZXR1cm4gaHRtbGA8c3BhbiBjbGFzcz1cInJvbGVwaWxsICR7cm9sZUNsYXNzW3ZdfVwiPiR7cm9sZUxhYmVsW3ZdfTwvc3Bhbj5gO1xufVxuXG5mdW5jdGlvbiBwbWlkQ2VsbChwKSB7XG4gIGNvbnN0IGlkcyA9IChwID8/IFwiXCIpLnRvU3RyaW5nKCkuc3BsaXQoXCI7XCIpLm1hcChzID0+IHMudHJpbSgpKS5maWx0ZXIoQm9vbGVhbik7XG4gIHJldHVybiBodG1sYCR7aWRzLm1hcCgoaWQsIGkpID0+IGh0bWxgJHtpID8gXCIsIFwiIDogXCJcIn08YSBocmVmPSR7XCJodHRwczovL3B1Ym1lZC5uY2JpLm5sbS5uaWguZ292L1wiICsgaWQgKyBcIi9cIn0gdGFyZ2V0PVwiX2JsYW5rXCIgcmVsPVwibm9vcGVuZXJcIj4ke2lkfTwvYT5gKX1gO1xufVxuXG5jZWxsVHlwZUNvbG91cnMgPSAoe1xuICBcInBhblwiOiBcIiM5NEEzQjhcIixcbiAgXCJUIGNlbGxcIjogXCIjMjJDNTVFXCIsXG4gIFwiQiBjZWxsXCI6IFwiIzM4QkRGOFwiLFxuICBcIk5LIGNlbGxcIjogXCIjRjk3MzE2XCIsXG4gIFwiRXBpdGhlbGlhbFwiOiBcIiNFQzQ4OTlcIixcbiAgXCJNb25vY3l0ZS9NYWNyb3BoYWdlXCI6IFwiIzhCNUNGNlwiLFxuICBcIkVuZG90aGVsaWFsXCI6IFwiI0VGNDQ0NFwiLFxuICBcIkZpYnJvYmxhc3RcIjogXCIjRDk3NzA2XCJcbn0pXG5cbi8vIGNlbGxfdHlwZSBtYXkgaG9sZCBzZXZlcmFsIGxpbmVhZ2VzLCBcIjtcIi1zZXBhcmF0ZWQ7IHJlbmRlciBvbmUgY2hpcCBlYWNoLlxuZnVuY3Rpb24gY2VsbFR5cGVDZWxsKHYpIHtcbiAgY29uc3QgcGFydHMgPSAodiA/PyBcIlwiKS50b1N0cmluZygpLnNwbGl0KFwiO1wiKS5tYXAocyA9PiBzLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pO1xuICBpZiAoIXBhcnRzLmxlbmd0aCkgcmV0dXJuIGh0bWxgPHNwYW4gY2xhc3M9XCJtdXRlZFwiPsK3PC9zcGFuPmA7XG4gIHJldHVybiBodG1sYCR7cGFydHMubWFwKHAgPT4ge1xuICAgIGNvbnN0IGMgPSBjZWxsVHlwZUNvbG91cnNbcF0gPz8gXCIjOTRBM0I4XCI7XG4gICAgY29uc3QgY2xzID0gXCJjdHBpbGxcIiArIChwID09PSBcInBhblwiID8gXCIgcGFuXCIgOiBcIlwiKTtcbiAgICByZXR1cm4gaHRtbGA8c3BhbiBjbGFzcz0ke2Nsc30gc3R5bGU9JHtcIi0tY3RjOiBcIiArIGN9PiR7cH08L3NwYW4+YDtcbiAgfSl9YDtcbn1cblxuZnVuY3Rpb24gdGFibGVGb3Iocm93cykge1xuICByZXR1cm4gaHRtbGA8dGFibGUgY2xhc3M9XCJzZXRUXCI+XG4gICAgPHRoZWFkPjx0cj5cbiAgICAgIDx0aD5HZW5lPC90aD48dGg+VGllcjwvdGg+PHRoPlJlZ3VsYXRvcnkgcm9sZTwvdGg+PHRoPkNlbGwgdHlwZTwvdGg+PHRoPlBNSUQocyk8L3RoPjx0aD5NU2lnREIgcmVmZXJlbmNlPC90aD5cbiAgICA8L3RyPjwvdGhlYWQ+XG4gICAgPHRib2R5PlxuICAgICAgJHtyb3dzLm1hcChkID0+IGh0bWxgPHRyPlxuICAgICAgICA8dGQgY2xhc3M9XCJtb25vXCI+JHtkLmdlbmVfc3ltYm9sfTwvdGQ+XG4gICAgICAgIDx0ZD48c3BhbiBjbGFzcz1cInRpZXJwaWxsICR7dGllckNsYXNzW2QucGF0aHdheV9sZXZlbF0gPz8gXCJcIn1cIj4ke3RpZXJMYWJlbFtkLnBhdGh3YXlfbGV2ZWxdID8/IGQucGF0aHdheV9sZXZlbH08L3NwYW4+PC90ZD5cbiAgICAgICAgPHRkPiR7cm9sZUNlbGwoZC5yZWd1bGF0b3J5X3JvbGUpfTwvdGQ+XG4gICAgICAgIDx0ZD4ke2NlbGxUeXBlQ2VsbChkLmNlbGxfdHlwZSl9PC90ZD5cbiAgICAgICAgPHRkPiR7cG1pZENlbGwoZC5wbWlkcyl9PC90ZD5cbiAgICAgICAgPHRkPiR7ZC5yZWZlcmVuY2VfZ2VuZV9zZXQgPyBkLnJlZmVyZW5jZV9nZW5lX3NldCA6IGh0bWxgPHNwYW4gY2xhc3M9XCJtdXRlZFwiPsK3PC9zcGFuPmB9PC90ZD5cbiAgICAgIDwvdHI+YCl9XG4gICAgPC90Ym9keT5cbiAgPC90YWJsZT5gO1xufVxuIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/akmclz\.github\.io\/immprint");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><strong>ImmPrint</strong> · collection v0.2.0-alpha</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Curated by Anthony K. McLean</p>
+</div>
+    <div class="nav-footer-right">
+<p><a href="LICENSE">CC&nbsp;BY&nbsp;4.0</a> · <a href="https://github.com/akmclz/immprint">GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

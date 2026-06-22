@@ -1,0 +1,205 @@
+[
+  {
+    "objectID": "cite.html",
+    "href": "cite.html",
+    "title": "Cite ImmPrint",
+    "section": "",
+    "text": "If ImmPrint contributes to your work, please cite the specific version you used so your analysis stays reproducible."
+  },
+  {
+    "objectID": "cite.html#doi",
+    "href": "cite.html#doi",
+    "title": "Cite ImmPrint",
+    "section": "DOI",
+    "text": "DOI\nA versioned DOI is minted through Zenodo for each release.\n\n\n\n\n\n\nNote\n\n\n\nThe first archived release will carry a Zenodo DOI, and this page will then list both the concept DOI (which always resolves to the latest version) and the per-version DOI. Until then, cite the version and URL below."
+  },
+  {
+    "objectID": "cite.html#citation",
+    "href": "cite.html#citation",
+    "title": "Cite ImmPrint",
+    "section": "Citation",
+    "text": "Citation\n\nMcLean, A. K. (2026). ImmPrint: a curated, citation-backed collection of immune signalling gene sets (Version 0.2.0-alpha) [Data set]. https://akmclz.github.io/immprint"
+  },
+  {
+    "objectID": "cite.html#bibtex",
+    "href": "cite.html#bibtex",
+    "title": "Cite ImmPrint",
+    "section": "BibTeX",
+    "text": "BibTeX\n@misc{immprint,\n  author       = {McLean, Anthony K.},\n  title        = {{ImmPrint: a curated, citation-backed collection of immune\n                  signalling gene sets}},\n  year         = {2026},\n  version      = {0.2.0-alpha},\n  howpublished = {\\url{https://akmclz.github.io/immprint}},\n  note         = {Accessed: YYYY-MM-DD}\n}\nA machine-readable CITATION.cff is included in the repository; GitHub renders a “Cite this repository” button from it."
+  },
+  {
+    "objectID": "cite.html#citing-the-collection-versus-the-software",
+    "href": "cite.html#citing-the-collection-versus-the-software",
+    "title": "Cite ImmPrint",
+    "section": "Citing the collection versus the software",
+    "text": "Citing the collection versus the software\n\nCite ImmPrint (this page) for the gene set definitions and data.\nCite the immprintr package separately if you want to credit the software, using citation(\"immprintr\") once it is installed."
+  },
+  {
+    "objectID": "changelog.html",
+    "href": "changelog.html",
+    "title": "Changelog",
+    "section": "",
+    "text": "This is the changelog for the ImmPrint collection, the curated data itself. It is versioned independently of the immprintr R package that delivers it. Each released collection snapshot is immutable; new curation ships as a new version."
+  },
+  {
+    "objectID": "changelog.html#sec-0-2-0-alpha",
+    "href": "changelog.html#sec-0-2-0-alpha",
+    "title": "Changelog",
+    "section": "0.2.0-alpha",
+    "text": "0.2.0-alpha\nAdds a regulatory role annotation, sweeps citations to human sources and extends cell type to multiple lineages.\n\nNew column regulatory_role, placed after the signalling tier (pathway_level) and before cell_type. It records each gene’s effect on its own pathway: none for a forward component or output, inhibitory for a negative regulator, activating for genuine positive feedback, and context_dependent where the sign varies.\nThe sign is judged relative to the named pathway, so the same gene can differ between sets: BCL2 is inhibitory in intrinsic apoptosis but none in the IL-7 and IL-15 survival programmes; BIRC2/BIRC3 are inhibitory in apoptosis but none in NOD and TNF; PTPN11 is none in PD1 and CTLA4 (where it enacts the inhibitory signal) but context_dependent in the cytokine sets.\nregulatory_role is a mechanistic annotation rather than a cited membership claim, so it carries no PMID. 39 memberships are non-none (32 inhibitory, 6 context_dependent, 1 activating); the remaining 681 are none.\nCitations were swept for species provenance, replacing animal-only foundational references with verified human pathway-explicit primary sources wherever a clean one exists. 83 memberships had their PMID set revised; where no clean human primary exists the foundational reference is kept and flagged rather than swapped for a weaker fit.\ncell_type now records multiple lineages per membership where the biology warrants, ;-delimited (for example Epithelial; Fibroblast), and refinement rows that previously duplicated a gene across lineages are consolidated into a single multi-value row.\nThe inhibitory checkpoints PD1 and CTLA4 are stamped T cell across their receptor and transducer tiers, and IL7 is likewise restricted to T cell throughout, since its receptor is lymphoid-restricted and human IL7R loss of function spares B and NK cells. IL15 is restricted to T cell; NK cell, its responder lineages. IL15RA is removed, since the high-affinity chain is expressed by the trans-presenting myeloid or stromal cell rather than the responder, and ImmPrint records genes expressed by the responding cell. Cytolytic effectors are T cell; NK cell. 55 memberships had their cell type revised.\nCD80 and CD86 are removed from IMMPRINT_CTLA4_SIGNALLING. They are the B7 ligands on the antigen-presenting cell rather than components of the T-cell signal, so they sit outside a signalling set on the same grounds costimulatory molecules are excluded from MHC class II.\nTNFAIP3 (A20) and NFKBIA (IκBα) are added to IMMPRINT_TNF_SIGNALLING at the transducer tier with regulatory_role = inhibitory. Both are TNF-induced, but they enter as components rather than as induced outputs because each acts back on the cascade itself: A20 by editing ubiquitin on RIP and binding TRAF2, IκBα by holding NF-κB in the cytoplasm until IKK-driven degradation.\nMCL1 is added to IMMPRINT_IL7_SIGNALLING at the effector tier, joining BCL2 as an IL-7 driven survival output. Both cite the same human primary, which shows IL-7 sustaining Bcl-2 and Mcl-1 through STAT5 in human T cells.\nGZMB is removed from IMMPRINT_IL21_SIGNALLING. Cytotoxic granule effectors stay in IMMPRINT_CYTOLYTIC_ACTIVITY rather than being duplicated into the cytokine signalling sets that prime them.\nFASLG is removed from IMMPRINT_CYTOLYTIC_ACTIVITY. It kills through the Fas death-receptor pathway rather than granule exocytosis, so it falls outside the granule-mediated scope of the set. The KLR recognition receptors are retained as the recognition step that precedes degranulation.\nGATA3 is added to IMMPRINT_IL4_IL13_SIGNALLING. The Th2 master TF was already present in the TYPE2 programme but not in its inducing signal set, unlike TBX21 and RORC which sit in both, so this closes that asymmetry.\nCXCL8, CCL2 and IL6 are added to IMMPRINT_IL1_SIGNALLING, and S100A8 to IMMPRINT_IL17_SIGNALLING, all at the effector tier. Each is an inflammatory output induced through the named pathway in human cells.\nCSF2 (GM-CSF) is added to IMMPRINT_IL2_SIGNALLING and IMMPRINT_IL12_SIGNALLING at the effector tier rather than to IMMPRINT_IL23_SIGNALLING. In human T helper cells GM-CSF is induced by IL-2 through STAT5 and promoted by the IL-12 driven Th1 axis while the IL-23 axis constrains it, reversing the expectation set by mouse pathogenic-Th17 models.\nTwo accidental duplicate rows are removed from IMMPRINT_IL17_SIGNALLING: CXCL8 and DEFB4A each held a pan row alongside a lineage-scoped row for the same gene. The pan rows are kept with their citations merged, restoring the rule that a gene appears once per set.\nThe column order is gene_set, gene_symbol, pathway_level, regulatory_role, cell_type, pmids, reference_gene_set. The collection now holds 44 gene sets and 720 memberships."
+  },
+  {
+    "objectID": "changelog.html#sec-0-1-0-alpha",
+    "href": "changelog.html#sec-0-1-0-alpha",
+    "title": "Changelog",
+    "section": "0.1.0-alpha",
+    "text": "0.1.0-alpha\nFirst public snapshot.\n\n44 gene sets, 724 gene set memberships.\nEvery membership carries at least one PubMed citation.\nEach gene is placed in the three-tier Receptor, Transducer, Effector signalling hierarchy.\nCell type structure: a cell type-agnostic pan core per pathway, with effector refinements layered on for specific lineages (listed below).\nMSigDB corroboration (Hallmark, Reactome, GO:BP) recorded per membership in reference_gene_set where applicable.\nAntigen-receptor and inhibitory-checkpoint pathways (TCR, BCR, CTLA4, PD1) are restricted to their defining lineage and terminate at the transducer tier by design.\n\n\nCell type variant genes\nThe genes added beyond each pathway’s pan core, by responding lineage. TCR and BCR carry no pan core, so the genes shown there are the full lineage-restricted set.\nIMMPRINT_BCR_SIGNALLING\n\nB cell: CD79A, CD79B, LYN, SYK, BTK, BLNK, PLCG2, PIK3CD, PIK3R1, AKT1, CARD11, BCL10, MALT1, NFATC1, NFKB1, RELA, VAV1\n\nIMMPRINT_IFNG_SIGNALLING\n\nMonocyte/Macrophage: FCGR1A, IL12B, CYBB\n\nIMMPRINT_IL10_SIGNALLING\n\nMonocyte/Macrophage: CD163, TIMP1, NFIL3, FCGR3A, MERTK\n\nIMMPRINT_IL17_SIGNALLING\n\nEpithelial: DEFB4A, S100A7, CCL20, CXCL8, LCN2, CXCL1\nFibroblast: IL6, CXCL8, CSF3, CXCL1, CCL20\n\nIMMPRINT_IL4_IL13_SIGNALLING\n\nB cell: FCER2, IGHE, IGHG4, IL4I1\nEpithelial: MUC5AC, CLCA1, POSTN, SERPINB2, CAPN14\nMonocyte/Macrophage: MRC1, FCER2, CCL18, ALOX15, TGM2\n\nIMMPRINT_IL6_SIGNALLING\n\nT cell: IL21, BCL6, ICOS\n\nIMMPRINT_TCR_SIGNALLING\n\nT cell: CD3D, CD3E, CD3G, CD247, LCK, FYN, ZAP70, LAT, LCP2, PLCG1, ITK, PRKCQ, CARD11, BCL10, MALT1, NFATC1, NFKB1, RELA, VAV1\n\nIMMPRINT_TGFB_SIGNALLING\n\nB cell: IGHA1, IGHA2\nEpithelial: SNAI1, VIM, SNAI2, CDH2, FN1\nFibroblast: ACTA2, FN1, COL1A1, COL3A1, POSTN, TAGLN\nT cell: FOXP3, ITGAE\n\nIMMPRINT_TNF_SIGNALLING\n\nEndothelial: ICAM1, SELE, CX3CL1, F3\nFibroblast: MMP1, MMP3, MMP14\n\n\n\n\n\n\n\nNote\n\n\n\nThe alpha label signals that the collection is still growing and that definitions and citations may change between alpha snapshots. Pin the version you use, and cite it (see Cite). The first non-alpha release will freeze a stable baseline."
+  },
+  {
+    "objectID": "access.html",
+    "href": "access.html",
+    "title": "Access",
+    "section": "",
+    "text": "ImmPrint is the data, and you can reach it however suits your workflow. Every route serves the same versioned snapshot."
+  },
+  {
+    "objectID": "access.html#r-the-immprintr-package",
+    "href": "access.html#r-the-immprintr-package",
+    "title": "Access",
+    "section": "R, the immprintr package",
+    "text": "R, the immprintr package\nThe immprintr package delivers ImmPrint as a tidy tibble, in the spirit of msigdbr.\n# install.packages(\"remotes\")\nremotes::install_github(\"akmclz/immprintr\")\n\nlibrary(immprintr)\n\nip &lt;- immprintr()                       # latest snapshot as a tidy tibble\nimmprintr_versions()                    # which snapshots are bundled\n\n# Build a signature for scoring (pan core plus a cell type refinement)\nimmprintr_signature(\"IMMPRINT_TGFB_SIGNALLING\", \"Fibroblast\")\n\n# Many signatures as a named list, ready for UCell or AddModuleScore\nimmprintr_signatures(c(\"IMMPRINT_IFNG_SIGNALLING\", \"IMMPRINT_TNF_SIGNALLING\"))"
+  },
+  {
+    "objectID": "access.html#raw-data-csv-or-json",
+    "href": "access.html#raw-data-csv-or-json",
+    "title": "Access",
+    "section": "Raw data, CSV or JSON",
+    "text": "Raw data, CSV or JSON\nThe canonical snapshot is published here for direct, language-agnostic use:\nDownload CSV Download JSON\nBoth are also versioned in the repository under data/.\n\nWhat each column means\nThe CSV has one row per gene set, cell type and gene membership:\n\n\n\n\n\n\n\ncolumn\nmeaning\n\n\n\n\ngene_set\nImmPrint set name, e.g. IMMPRINT_IFNG_SIGNALLING\n\n\ngene_symbol\nHGNC gene symbol\n\n\npathway_level\nsignalling tier: 1 = Receptor, 2 = Transducer, 3 = Effector\n\n\nregulatory_role\nthe gene’s effect on its own pathway: none (a forward component or output), inhibitory, activating (genuine positive feedback) or context_dependent\n\n\ncell_type\nresponding lineage; several lineages are semicolon-delimited (e.g. Epithelial; Fibroblast); pan for the cell type-agnostic core\n\n\npmids\nsemicolon-delimited PubMed ID(s) supporting the membership\n\n\nreference_gene_set\ncorroborating MSigDB set, where available\n\n\n\nThe JSON carries the same fields per record (with pmids as an array and an added pathway_level_label), under a small header giving version, n_gene_sets and n_pairs."
+  },
+  {
+    "objectID": "access.html#python",
+    "href": "access.html#python",
+    "title": "Access",
+    "section": "Python",
+    "text": "Python\nThere is no dedicated package yet, so read the published files directly:\nimport pandas as pd\n\nurl = \"https://akmclz.github.io/immprint/data/immprint_0.2.0-alpha.csv\"\nip = pd.read_csv(url)\n\n# genes of one set, by tier\nip.query(\"gene_set == 'IMMPRINT_IFNG_SIGNALLING'\")[[\"gene_symbol\", \"pathway_level\"]]\n\n# pan core plus a lineage refinement; cell_type may list several lineages,\n# so split on \";\" rather than matching the whole string\ndef has_lineage(ct, want):\n    parts = [p.strip() for p in str(ct).split(\";\")]\n    return \"pan\" in parts or want in parts\n\ntgfb_fibro = ip[(ip.gene_set == \"IMMPRINT_TGFB_SIGNALLING\")\n                & ip.cell_type.apply(has_lineage, want=\"Fibroblast\")][\"gene_symbol\"]\n\n# a named dict of signatures\nsigs = ip.groupby(\"gene_set\")[\"gene_symbol\"].apply(list).to_dict()"
+  },
+  {
+    "objectID": "access.html#versioning",
+    "href": "access.html#versioning",
+    "title": "Access",
+    "section": "Versioning",
+    "text": "Versioning\nEvery snapshot is immutable. Pin the version your analysis used, both the package immprintr(version = \"0.2.0-alpha\") and the raw files are version-stamped, so results stay reproducible. See the changelog and how to cite."
+  },
+  {
+    "objectID": "rationale.html",
+    "href": "rationale.html",
+    "title": "Curation rationale",
+    "section": "",
+    "text": "ImmPrint exists to score immune processes in transcriptomic data cleanly, and in a way you can defend. This page sets out the curatorial decisions that shape the collection."
+  },
+  {
+    "objectID": "rationale.html#why-not-just-use-hallmark-reactome-or-go",
+    "href": "rationale.html#why-not-just-use-hallmark-reactome-or-go",
+    "title": "Curation rationale",
+    "section": "Why not just use Hallmark, Reactome or GO?",
+    "text": "Why not just use Hallmark, Reactome or GO?\nGeneral-purpose collections are invaluable, but they are built for breadth rather than for clean immune signatures. Used directly for module scoring, they tend to share a few recurring problems:\n\nMixed granularity. A single set may fold a receptor, its entire transducer cascade, generic stress machinery and dozens of loosely associated targets into one undifferentiated list.\nLigand contamination. Signalling sets frequently include the very ligand that triggers the pathway, either for completeness or to account for autocrine signalling in bulk RNA-seq data. However, single-cell RNA-seq allows ligand-producing and responding cells to be distinguished. In this context, a gene set that carries its own ligand pollutes the score of the cell you actually care about.\nNon-specific drivers. Stress and activation-response genes (MAPK, ATF, JUN, FOS, HSP) recur across many sets and inflate co-occurrence without adding pathway specificity.\nUnsourced membership. Membership is rarely traceable to a specific paper linking that gene to that pathway."
+  },
+  {
+    "objectID": "rationale.html#principle-1---mechanistic-specificity",
+    "href": "rationale.html#principle-1---mechanistic-specificity",
+    "title": "Curation rationale",
+    "section": "Principle 1 - Mechanistic specificity",
+    "text": "Principle 1 - Mechanistic specificity\nEach set aims to capture a single, mechanistically coherent process. Ubiquitous machinery that carries no pathway-specific information (ribosomal proteins, proteasome subunits, ubiquitination machinery, core housekeeping genes) is excluded from every set. The test for each candidate gene is not “is it expressed when this pathway is active?” but “does its expression specifically mark this process?”"
+  },
+  {
+    "objectID": "rationale.html#principle-2---inducer-and-responder-separation",
+    "href": "rationale.html#principle-2---inducer-and-responder-separation",
+    "title": "Curation rationale",
+    "section": "Principle 2 - Inducer and responder separation",
+    "text": "Principle 2 - Inducer and responder separation\nThe most important and most context-dependent rule. A pathway’s own ligand is excluded from its own signalling set, because the ligand reports on the sending cell rather than the responding one. The same molecule is kept wherever it is a genuine output of the process being measured.\nSo interferon-gamma is treated differently by context: IFNG is not a member of IMMPRINT_IFNG_SIGNALLING, but it is a legitimate effector of IMMPRINT_TYPE1_RESPONSE. The same logic removes IL2 from IMMPRINT_IL2_SIGNALLING and TNF from IMMPRINT_TNF_SIGNALLING, while leaving receptors, transducers and downstream effectors in place."
+  },
+  {
+    "objectID": "rationale.html#principle-3---focus-on-the-signal-receiving-cell",
+    "href": "rationale.html#principle-3---focus-on-the-signal-receiving-cell",
+    "title": "Curation rationale",
+    "section": "Principle 3 - Focus on the signal-receiving cell",
+    "text": "Principle 3 - Focus on the signal-receiving cell\nA generalisation of Principle 2: a set describes the cell receiving a signal or enacting a process rather than the cell sending it. The checkpoint sets make this concrete. The inhibitory-receptor sets contain the receptor and its intrinsic signalling apparatus rather than the ligands presented by the opposing cell (the PD-L1/PD-L2 ligands are deliberately absent from IMMPRINT_PD1_SIGNALLING). A corollary, for the coinhibitory programmes: these sets contain only genes that are induced or active in the programme and exclude genes the pathway represses."
+  },
+  {
+    "objectID": "rationale.html#principle-4---cell-type-specificity",
+    "href": "rationale.html#principle-4---cell-type-specificity",
+    "title": "Curation rationale",
+    "section": "Principle 4 - Cell type specificity",
+    "text": "Principle 4 - Cell type specificity\nThe same ligand drives different programmes in different cells. TGF-β, for instance, does very different things in T cells, fibroblasts and epithelium. ImmPrint layers cell type-specific effector refinements onto each pathway’s shared pan core, so a cell is scored against the version that matches what it is. These refinements are added only where the divergence is real and well-documented."
+  },
+  {
+    "objectID": "rationale.html#principle-5---citations-you-can-follow",
+    "href": "rationale.html#principle-5---citations-you-can-follow",
+    "title": "Curation rationale",
+    "section": "Principle 5 - Citations you can follow",
+    "text": "Principle 5 - Citations you can follow\nEvery gene set membership carries at least one PubMed ID. The citation should be primary literature that links that gene to that named pathway. A generic review is not enough. Where a gene appears in more than one set, each appearance is meant to be supported by a paper appropriate to that context.\n\n\n\n\n\n\nNote\n\n\n\nThis is an alpha release. Citations are checked against PubMed where possible, but some may still need correcting. If you find a citation that does not support its membership, please flag it on GitHub so it can be fixed in the next version."
+  },
+  {
+    "objectID": "rationale.html#principle-6---corroboration-by-msigdb",
+    "href": "rationale.html#principle-6---corroboration-by-msigdb",
+    "title": "Curation rationale",
+    "section": "Principle 6 - Corroboration by MSigDB",
+    "text": "Principle 6 - Corroboration by MSigDB\nWhere a gene’s membership is corroborated by an assigned MSigDB reference gene set (from Hallmark, Reactome or GO:BP), that set is recorded in reference_gene_set. A blank entry means either the gene is not covered by any MSigDB counterparts or that there is no valid counterpart."
+  },
+  {
+    "objectID": "rationale.html#principle-7---explicit-family-exclusions",
+    "href": "rationale.html#principle-7---explicit-family-exclusions",
+    "title": "Curation rationale",
+    "section": "Principle 7 - Explicit family exclusions",
+    "text": "Principle 7 - Explicit family exclusions\nA few gene families are excluded from all sets by standing policy, because they are general stress or activation responders rather than pathway-specific markers: the MAPK families (MAPK*, MAP2K*, MAP3K*), and the ATF, JUN, FOS and HSP families. Excluding them keeps sets from collapsing toward a generic “this cell is activated” signal."
+  },
+  {
+    "objectID": "rationale.html#the-signalling-hierarchy-annotation",
+    "href": "rationale.html#the-signalling-hierarchy-annotation",
+    "title": "Curation rationale",
+    "section": "The signalling hierarchy annotation",
+    "text": "The signalling hierarchy annotation\nSeparately from the principles above, every gene is annotated with a position in a three-tier signalling hierarchy (pathway_level):\n\nReceptor (1): the sensor or input, meaning surface or intracellular receptors. For receptor-less metabolic or structural sets, the entry tier is the substrate-import transporters or the top driving transcription factor.\nTransducer (2): kinases, adaptors and transcription factors acting at the signalling node (STATs, IRFs, NF-κB, SMADs, master lineage TFs), plus core processing enzymes. Initiator and inflammatory caspases sit here. The tier marks where a gene product acts, so negative regulators that operate at this node (e.g. SOCS proteins and the inhibitory SMADs) sit here too. Their direction is recorded separately by regulatory_role.\nEffector (3): the output, meaning secreted cytokines and chemokines, cytotoxic and antiviral/antimicrobial molecules, presented MHC, terminal metabolic complexes and induced target-gene products. Executioner caspases sit here.\n\nThe tiers are interpretive metadata rather than a scoring axis. You can subset a pathway by tier, but the effector tier is often small, so per-tier subsetting is best treated as optional. By design, antigen-receptor and inhibitory-checkpoint sets (TCR, BCR, CTLA4, PD1) carry no effector tier, since they are detection or inhibition modules that terminate at the transducer level."
+  },
+  {
+    "objectID": "rationale.html#the-regulatory-role-annotation",
+    "href": "rationale.html#the-regulatory-role-annotation",
+    "title": "Curation rationale",
+    "section": "The regulatory role annotation",
+    "text": "The regulatory role annotation\nThe tier locates a gene in the cascade; it does not say whether the gene drives the pathway or holds it back. That direction is recorded separately, per membership, in regulatory_role:\n\nnone: a forward component or a faithful output of the pathway. This is most genes, including receptors, transducers and effector products.\ninhibitory: a negative regulator of the pathway, such as the SOCS and CISH negative-feedback proteins, the inhibitory SMADs, the Wnt destruction complex, decoy receptors and the anti-apoptotic BCL2 guards.\nactivating: a genuine positive-feedback amplifier, reserved for the rare gene that feeds back to boost its own pathway rather than merely transmitting it.\ncontext_dependent: the sign genuinely varies, as for PTPN11 in cytokine signalling.\n\nThe sign is judged relative to the gene’s own pathway, which is why it lives on the membership rather than the gene. IL1RN is a faithful output of IL-10 even though it antagonises IL-1, so in IMMPRINT_IL10_SIGNALLING it is none, not a negative regulator. BCL2 opposes intrinsic apoptosis but is a survival output of IL-7 and IL-15, so it is inhibitory in one set and none in the others. PTPN11 enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere."
+  },
+  {
+    "objectID": "rationale.html#versioning",
+    "href": "rationale.html#versioning",
+    "title": "Curation rationale",
+    "section": "Versioning",
+    "text": "Versioning\nEach collection is an immutable, versioned snapshot. The gene sets behind a published analysis can be traced back to the exact definitions used, the way an MSigDB release is pinned. New curation ships as a new version; released versions are never altered. See the changelog."
+  },
+  {
+    "objectID": "rationale.html#intended-use",
+    "href": "rationale.html#intended-use",
+    "title": "Curation rationale",
+    "section": "Intended use",
+    "text": "Intended use\nImmPrint is built for module scoring of immune processes, reading out the activity of specific, mechanistically defined programmes across cell types, tissues and disease states. The sets are plain, unweighted gene lists, so they work with any rank-based scoring method (UCell, AUCell, singscore, ssGSEA) and with average-based methods like Seurat::AddModuleScore. See Access to get started."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Reliable gene sets for immune signalling.",
+    "section": "",
+    "text": "ImmPrint immune gene set collection · v0.2.0-alpha\n  \n  ImmPrint is a focused collection of immune signalling gene sets,\n  built so you can score them with confidence. Each gene is specific to the\n  process, kept apart from the ligand that triggers it, placed in a Receptor →\n  Transducer → Effector hierarchy and tied to a paper for that gene in\n  that pathway.\n  \n    Browse the gene sets\n    Use it in R\ndata = FileAttachment(\"data/immprint_0.2.0-alpha.csv\").csv()\nheroSet = \"IMMPRINT_IFNG_SIGNALLING\"\nheroTiers = [\n  { tier: \"r\", label: \"Receptor\", genes: [\"IFNGR1\", \"IFNGR2\"] },\n  { tier: \"t\", label: \"Transducer\", genes: [\"JAK1\", \"JAK2\", \"STAT1\"] },\n  { tier: \"e\", label: \"Effector\", genes: [\"CXCL9\", \"CXCL10\", \"GBP1\"] }\n]\ntierColour = ({ r: \"var(--tier-receptor)\", t: \"var(--tier-transducer)\", e: \"var(--tier-effector)\" })\nheroPapers = ({\n  IFNGR1: 'Aguet, Dembić & Merlin (1988), \"Molecular cloning and expression of the human interferon-gamma receptor\"',\n  IFNGR2: 'Hemmi et al. (1994), \"A novel member of the interferon receptor family complements functionality of the murine interferon gamma receptor in human cells\"',\n  JAK1: 'Müller et al. (1993), \"The protein tyrosine kinase JAK1 complements defects in interferon-alpha/beta and -gamma signal transduction\"',\n  JAK2: 'Watling et al. (1993), \"Complementation by the protein tyrosine kinase JAK2 of a mutant cell line defective in the interferon-gamma signal transduction pathway\"',\n  STAT1: 'Shuai et al. (1992), \"Activation of transcription by IFN-gamma: tyrosine phosphorylation of a 91-kD DNA binding protein\"',\n  CXCL9: 'Liao et al. (1995), \"Human Mig chemokine: biochemical and functional characterization\"',\n  CXCL10: 'Luster, Unkeless & Ravetch (1985), \"γ-Interferon transcriptionally regulates an early-response gene containing homology to platelet proteins\"',\n  GBP1: 'Prakash et al. (2000), \"Triphosphate structure of guanylate-binding protein 1 and implications for nucleotide binding and GTPase mechanism\"'\n})\nmutable picked = \"STAT1\"\nfunction pmidLine(gene) {\n  const row = data.find(d =&gt; d.gene_set === heroSet && d.gene_symbol === gene);\n  const ids = row ? String(row.pmids).split(\";\").map(s =&gt; s.trim()).filter(Boolean) : [];\n  const col = heroTiers.find(c =&gt; c.genes.includes(gene));\n  const colour = col ? tierColour[col.tier] : \"var(--ink)\";\n  return html`&lt;div class=\"pmid\"&gt;\n    &lt;div class=\"pmid-line\"&gt;&lt;strong style=${\"color:\" + colour}&gt;${gene}&lt;/strong&gt; &nbsp;·&nbsp; ${ids.length\n      ? ids.map((id, i) =&gt; html`${i ? \", \" : \"\"}&lt;a style=${\"color:\" + colour} href=${\"https://pubmed.ncbi.nlm.nih.gov/\" + id + \"/\"} target=\"_blank\" rel=\"noopener\"&gt;PMID ${id}&lt;/a&gt;`)\n      : \"no recorded citation\"}&lt;/div&gt;\n    &lt;div class=\"paper-title\"&gt;${heroPapers[gene] || \"\"}&lt;/div&gt;\n  &lt;/div&gt;`;\n}\n{\n  const el = html`&lt;div class=\"trace\"&gt;\n    &lt;div class=\"trace-head\"&gt;one set, three tiers: &lt;span class=\"setname\"&gt;${heroSet}&lt;/span&gt;*&lt;/div&gt;\n    &lt;div class=\"tiers\"&gt;\n      ${heroTiers.map(col =&gt; html`&lt;div class=\"tier ${col.tier}\"&gt;\n        &lt;div class=\"tlabel\"&gt;${col.label}&lt;/div&gt;\n        ${col.genes.map(g =&gt; html`&lt;span class=\"gene\" data-gene=\"${g}\"\n            style=${picked === g ? (\"border-bottom-color:\" + tierColour[col.tier]) : \"\"}&gt;${g}&lt;/span&gt;`)}\n      &lt;/div&gt;`)}\n    &lt;/div&gt;\n    &lt;div class=\"click-note\"&gt;Click any gene to see its recorded citation&lt;/div&gt;\n    ${pmidLine(picked)}\n    &lt;div class=\"trace-foot\"&gt;*These are a few example genes from this set rather than the full list.&lt;/div&gt;\n  &lt;/div&gt;`;\n  el.addEventListener(\"click\", (e) =&gt; {\n    const span = e.target.closest(\".gene\");\n    if (span && span.dataset.gene) mutable picked = span.dataset.gene;\n  });\n  return el;\n}\nhtml`&lt;div class=\"statstrip\"&gt;\n  &lt;div class=\"stat\"&gt;&lt;div class=\"num\"&gt;${new Set(data.map(d =&gt; d.gene_set)).size}&lt;/div&gt;&lt;div class=\"cap\"&gt;gene sets&lt;/div&gt;&lt;/div&gt;\n  &lt;div class=\"stat\"&gt;&lt;div class=\"num\"&gt;${data.length}&lt;/div&gt;&lt;div class=\"cap\"&gt;gene memberships&lt;/div&gt;&lt;/div&gt;\n  &lt;div class=\"stat\"&gt;&lt;div class=\"num\"&gt;${new Set(data.flatMap(d =&gt; d.cell_type.split(\";\").map(s =&gt; s.trim())).filter(s =&gt; s && s !== \"pan\")).size}&lt;/div&gt;&lt;div class=\"cap\"&gt;cell type variants&lt;/div&gt;&lt;/div&gt;\n  &lt;div class=\"stat\"&gt;&lt;div class=\"num\"&gt;100%&lt;/div&gt;&lt;div class=\"cap\"&gt;PMID-backed&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;`"
+  },
+  {
+    "objectID": "index.html#what-sets-it-apart",
+    "href": "index.html#what-sets-it-apart",
+    "title": "Reliable gene sets for immune signalling.",
+    "section": "What sets it apart",
+    "text": "What sets it apart\nBroad collections (Hallmark, Reactome, GO) are built for coverage. ImmPrint is built to be a focused immune signalling resource you can score and defend.\n\n\nMechanistic specificity\nEach set is built around a single process. Ubiquitous machinery (ribosomal, proteasomal, ubiquitin) and non-specific stress or activation families (MAPK, ATF, JUN, FOS, HSP) are excluded by policy.\n\n\nInducer and responder separation\nA pathway’s own ligand is excluded from its signalling set but kept where it is a genuine output, so IL2 is absent from IMMPRINT_IL2_SIGNALLING, yet IFNG is present in IMMPRINT_TYPE1_RESPONSE. This matters most in single-cell data, where the sending and receiving cells are not the same cell.\n\n\nA signalling hierarchy\nEvery gene is placed in a three-tier Receptor → Transducer → Effector hierarchy, so a set can be read, or subset, by where each gene sits in the cascade.\n\n\nCitations you can follow\nEvery gene set membership carries a PubMed ID for a paper linking that gene to that named pathway. Where MSigDB corroborates a membership, that reference is recorded too.\n\n\nRead the curation rationale →"
+  },
+  {
+    "objectID": "browse.html",
+    "href": "browse.html",
+    "title": "Browse the gene sets",
+    "section": "",
+    "text": "Pick a gene set to see its genes, signalling tiers and citations. Use the search box to filter the list. PMIDs link to PubMed.\nDownload CSV Download JSON\n\ndata = FileAttachment(\"data/immprint_0.2.0-alpha.csv\").csv()\n\n\n\n\n\n\n\nsetSummary = {\n  const byset = new Map();\n  for (const d of data) {\n    if (!byset.has(d.gene_set)) byset.set(d.gene_set, new Set());\n    byset.get(d.gene_set).add(d.gene_symbol);\n  }\n  return Array.from(byset, ([name, genes]) =&gt; ({ name, n: genes.size }))\n    .sort((a, b) =&gt; a.name.localeCompare(b.name));\n}\n\n\n\n\n\n\n\nmutable selectedSet = null\nmutable listQuery = \"\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Search box in its own cell so it keeps focus while the list filters\nfilterBox = {\n  const inp = html`&lt;input type=\"search\" placeholder=\"Filter gene sets\" class=\"setsearch\" /&gt;`;\n  inp.oninput = () =&gt; { mutable listQuery = inp.value; };\n  return inp;\n}\n\n\n\n\n\n\n\n// Gene set list: linked text, three columns, alphabetical, filtered by the search\n{\n  const ql = (listQuery || \"\").trim().toLowerCase();\n  const sets = setSummary.filter(s =&gt; !ql || s.name.toLowerCase().includes(ql));\n  const el = sets.length\n    ? html`&lt;div class=\"setcols\"&gt;\n        ${sets.map(s =&gt; html`&lt;a class=${\"setlink\" + (s.name === selectedSet ? \" active\" : \"\")} data-set=\"${s.name}\"&gt;${s.name} &lt;span class=\"ct\"&gt;${s.n}&lt;/span&gt;&lt;/a&gt;`)}\n      &lt;/div&gt;`\n    : html`&lt;p class=\"muted\" style=\"margin-top:0.8rem\"&gt;No gene set matches that filter.&lt;/p&gt;`;\n  el.addEventListener(\"click\", (e) =&gt; {\n    const a = e.target.closest(\".setlink\");\n    if (a && a.dataset.set) {\n      mutable selectedSet = a.dataset.set;\n      setTimeout(() =&gt; {\n        const t = document.getElementById(\"set-detail\");\n        if (t) t.scrollIntoView({ behavior: \"smooth\", block: \"start\" });\n      }, 60);\n    }\n  });\n  return el;\n}\n\n\n\n\n\n\n\n// Selected-set table: fully displayed, no scroll bar\n{\n  if (!selectedSet) {\n    return html`&lt;p class=\"muted\" style=\"margin-top:1.6rem\"&gt;Select a gene set above to view its genes, tiers and citations.&lt;/p&gt;`;\n  }\n  const rows = data.filter(d =&gt; d.gene_set === selectedSet).slice().sort((a, b) =&gt; {\n    const t = (+a.pathway_level) - (+b.pathway_level);\n    if (t) return t;\n    const ak = a.cell_type === \"pan\" ? \"\" : a.cell_type.toLowerCase();\n    const bk = b.cell_type === \"pan\" ? \"\" : b.cell_type.toLowerCase();\n    return ak.localeCompare(bk);\n  });\n  const body = [\n    \"Gene set: \" + selectedSet, \"\",\n    \"### Genes to add\", \"\",\n    \"### Genes to remove\", \"\",\n    \"### Citation amendments\", \"\",\n    \"### Other notes\", \"\"\n  ].join(\"\\n\");\n  const issueUrl = \"https://github.com/akmclz/immprint/issues/new?title=\"\n    + encodeURIComponent(\"Feedback: \" + selectedSet)\n    + \"&body=\" + encodeURIComponent(body);\n  return html`&lt;div id=\"set-detail\" style=\"margin-top:1.8rem\"&gt;\n    &lt;div class=\"set-detail-head\" style=\"font-size:1.05rem\"&gt;${selectedSet}&lt;/div&gt;\n    &lt;p class=\"muted\" style=\"margin:0.2rem 0 0.7rem\"&gt;${rows.length} genes&lt;/p&gt;\n    ${tableFor(rows)}\n    &lt;div class=\"set-feedback\"&gt;\n      &lt;a class=\"btn-ghost\" href=${issueUrl} target=\"_blank\" rel=\"noopener\"&gt;Suggest changes to this gene set&lt;/a&gt;\n      &lt;span class=\"muted\"&gt;Opens a pre-filled GitHub issue.&lt;/span&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;`;\n}\n\n\n\n\n\n\n\ntierLabel = ({ \"1\": \"Receptor\", \"2\": \"Transducer\", \"3\": \"Effector\" })\ntierClass = ({ \"1\": \"r\", \"2\": \"t\", \"3\": \"e\" })\n\nroleLabel = ({ inhibitory: \"Inhibitory\", activating: \"Activating\", context_dependent: \"Context-dependent\" })\nroleClass = ({ inhibitory: \"inh\", activating: \"act\", context_dependent: \"ctx\" })\n\nfunction roleCell(r) {\n  const v = (r ?? \"none\").toString();\n  if (v === \"none\" || !roleLabel[v]) return html`&lt;span class=\"muted\"&gt;·&lt;/span&gt;`;\n  return html`&lt;span class=\"rolepill ${roleClass[v]}\"&gt;${roleLabel[v]}&lt;/span&gt;`;\n}\n\nfunction pmidCell(p) {\n  const ids = (p ?? \"\").toString().split(\";\").map(s =&gt; s.trim()).filter(Boolean);\n  return html`${ids.map((id, i) =&gt; html`${i ? \", \" : \"\"}&lt;a href=${\"https://pubmed.ncbi.nlm.nih.gov/\" + id + \"/\"} target=\"_blank\" rel=\"noopener\"&gt;${id}&lt;/a&gt;`)}`;\n}\n\ncellTypeColours = ({\n  \"pan\": \"#94A3B8\",\n  \"T cell\": \"#22C55E\",\n  \"B cell\": \"#38BDF8\",\n  \"NK cell\": \"#F97316\",\n  \"Epithelial\": \"#EC4899\",\n  \"Monocyte/Macrophage\": \"#8B5CF6\",\n  \"Endothelial\": \"#EF4444\",\n  \"Fibroblast\": \"#D97706\"\n})\n\n// cell_type may hold several lineages, \";\"-separated; render one chip each.\nfunction cellTypeCell(v) {\n  const parts = (v ?? \"\").toString().split(\";\").map(s =&gt; s.trim()).filter(Boolean);\n  if (!parts.length) return html`&lt;span class=\"muted\"&gt;·&lt;/span&gt;`;\n  return html`${parts.map(p =&gt; {\n    const c = cellTypeColours[p] ?? \"#94A3B8\";\n    const cls = \"ctpill\" + (p === \"pan\" ? \" pan\" : \"\");\n    return html`&lt;span class=${cls} style=${\"--ctc: \" + c}&gt;${p}&lt;/span&gt;`;\n  })}`;\n}\n\nfunction tableFor(rows) {\n  return html`&lt;table class=\"setT\"&gt;\n    &lt;thead&gt;&lt;tr&gt;\n      &lt;th&gt;Gene&lt;/th&gt;&lt;th&gt;Tier&lt;/th&gt;&lt;th&gt;Regulatory role&lt;/th&gt;&lt;th&gt;Cell type&lt;/th&gt;&lt;th&gt;PMID(s)&lt;/th&gt;&lt;th&gt;MSigDB reference&lt;/th&gt;\n    &lt;/tr&gt;&lt;/thead&gt;\n    &lt;tbody&gt;\n      ${rows.map(d =&gt; html`&lt;tr&gt;\n        &lt;td class=\"mono\"&gt;${d.gene_symbol}&lt;/td&gt;\n        &lt;td&gt;&lt;span class=\"tierpill ${tierClass[d.pathway_level] ?? \"\"}\"&gt;${tierLabel[d.pathway_level] ?? d.pathway_level}&lt;/span&gt;&lt;/td&gt;\n        &lt;td&gt;${roleCell(d.regulatory_role)}&lt;/td&gt;\n        &lt;td&gt;${cellTypeCell(d.cell_type)}&lt;/td&gt;\n        &lt;td&gt;${pmidCell(d.pmids)}&lt;/td&gt;\n        &lt;td&gt;${d.reference_gene_set ? d.reference_gene_set : html`&lt;span class=\"muted\"&gt;·&lt;/span&gt;`}&lt;/td&gt;\n      &lt;/tr&gt;`)}\n    &lt;/tbody&gt;\n  &lt;/table&gt;`;\n}"
+  }
+]
