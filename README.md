@@ -19,7 +19,7 @@ data/        canonical versioned snapshots (CSV and JSON)
 custom.scss  site theme
 ```
 
-The current snapshot is **v0.2.0-alpha**: 44 gene sets, 724 gene set memberships.
+The current snapshot is **v0.2.0-alpha**: 44 gene sets, 720 gene set memberships.
 Snapshots are immutable; new curation ships as a new version.
 
 ## Using the collection
