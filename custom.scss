@@ -309,4 +309,7 @@ code {
   background: #faf5ff;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
+  justify-content: center;
+  text-align: center;  
 }
+.quarto-announcement-content { text-align: center; margin: 0 auto; }
