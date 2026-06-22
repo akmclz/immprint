@@ -10,7 +10,7 @@ new curation ships as a new version.
 
 ## 0.2.0-alpha {#sec-0-2-0-alpha}
 
-*Adds a regulatory role annotation, sweeps citations to human sources and extends
+*Adds a regulatory role annotation, replaces many animal-only citations with human ones and extends
 cell type to multiple lineages.*
 
 - New column **`regulatory_role`**, placed after the signalling tier
@@ -18,19 +18,10 @@ cell type to multiple lineages.*
   *own* pathway: `none` for a forward component or output, `inhibitory` for a
   negative regulator, `activating` for genuine positive feedback, and
   `context_dependent` where the sign varies.
-- The sign is judged relative to the named pathway, so the same gene can differ
-  between sets: `BCL2` is `inhibitory` in intrinsic apoptosis but `none` in the
-  IL-7 and IL-15 survival programmes; `BIRC2`/`BIRC3` are `inhibitory` in apoptosis
-  but `none` in NOD and TNF; `PTPN11` is `none` in PD1 and CTLA4 (where it enacts
-  the inhibitory signal) but `context_dependent` in the cytokine sets.
-- `regulatory_role` is a mechanistic annotation rather than a cited membership
-  claim, so it carries no PMID. 39 memberships are non-`none` (32 `inhibitory`,
-  6 `context_dependent`, 1 `activating`); the remaining 681 are `none`.
-- Citations were swept for species provenance, replacing animal-only foundational
+- Citations were reassessed to replace animal-only foundational
   references with verified human pathway-explicit primary sources wherever a clean
   one exists. 83 memberships had their PMID set revised; where no clean human
-  primary exists the foundational reference is kept and flagged rather than swapped
-  for a weaker fit.
+  primary exists the foundational reference is kept.
 - `cell_type` now records multiple lineages per membership where the biology
   warrants, `;`-delimited (for example `Epithelial; Fibroblast`), and refinement
   rows that previously duplicated a gene across lineages are consolidated into a
@@ -51,8 +42,7 @@ cell type to multiple lineages.*
 - `TNFAIP3` (A20) and `NFKBIA` (IκBα) are added to `IMMPRINT_TNF_SIGNALLING` at the
   transducer tier with `regulatory_role = inhibitory`. Both are TNF-induced, but
   they enter as components rather than as induced outputs because each acts back on
-  the cascade itself: A20 by editing ubiquitin on RIP and binding TRAF2, IκBα by
-  holding NF-κB in the cytoplasm until IKK-driven degradation.
+  the cascade itself.
 - `MCL1` is added to `IMMPRINT_IL7_SIGNALLING` at the effector tier, joining `BCL2`
   as an IL-7 driven survival output. Both cite the same human primary, which shows
   IL-7 sustaining Bcl-2 and Mcl-1 through STAT5 in human T cells.
@@ -63,9 +53,7 @@ cell type to multiple lineages.*
   death-receptor pathway rather than granule exocytosis, so it falls outside the
   granule-mediated scope of the set. The KLR recognition receptors are retained as
   the recognition step that precedes degranulation.
-- `GATA3` is added to `IMMPRINT_IL4_IL13_SIGNALLING`. The Th2 master TF was
-  already present in the TYPE2 programme but not in its inducing signal set,
-  unlike `TBX21` and `RORC` which sit in both, so this closes that asymmetry.
+- `GATA3` is added to `IMMPRINT_IL4_IL13_SIGNALLING`.
 - `CXCL8`, `CCL2` and `IL6` are added to `IMMPRINT_IL1_SIGNALLING`, and `S100A8`
   to `IMMPRINT_IL17_SIGNALLING`, all at the effector tier. Each is an inflammatory
   output induced through the named pathway in human cells.
