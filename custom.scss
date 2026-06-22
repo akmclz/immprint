@@ -302,3 +302,11 @@ code {
 .ctpill.pan { opacity: 0.7; }
 
 .muted { color: var(--slate); }
+
+
+/* announcement banner */
+.quarto-announcement {
+  background: #faf5ff;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
