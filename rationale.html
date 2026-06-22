@@ -162,10 +162,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="why-not-just-use-hallmark-reactome-or-go">Why not just use Hallmark, Reactome or GO?</h2>
 <p>General-purpose collections are invaluable, but they are built for breadth rather than for clean immune <em>signatures</em>. Used directly for module scoring, they tend to share a few recurring problems:</p>
 <ul>
-<li><strong>Mixed granularity.</strong> A single set may fold a receptor, its entire transducer cascade, generic stress machinery and dozens of loosely associated targets into one undifferentiated list.</li>
+<li><strong>Non-specific drivers.</strong> Stress and activation-response genes (MAPK, ATF, JUN, FOS, HSP) recur across many sets, dampening the specificity of module scores.</li>
 <li><strong>Ligand contamination.</strong> Signalling sets frequently include the very ligand that triggers the pathway, either for completeness or to account for autocrine signalling in bulk RNA-seq data. However, single-cell RNA-seq allows ligand-producing and responding cells to be distinguished. In this context, a gene set that carries its own ligand pollutes the score of the cell you actually care about.</li>
-<li><strong>Non-specific drivers.</strong> Stress and activation-response genes (MAPK, ATF, JUN, FOS, HSP) recur across many sets and inflate co-occurrence without adding pathway specificity.</li>
-<li><strong>Unsourced membership.</strong> Membership is rarely traceable to a specific paper linking <em>that gene</em> to <em>that pathway</em>.</li>
+<li><strong>No internal structure.</strong> A single set may fold a receptor, its entire transducer cascade, generic stress machinery and dozens of loosely associated targets into one undifferentiated list.</li>
+<li><strong>Unsourced membership.</strong> Membership is rarely traceable to a specific paper linking <em>that</em> gene to <em>that</em> pathway.</li>
 </ul>
 </section>
 <section id="principle-1---mechanistic-specificity" class="level2">
