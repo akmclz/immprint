@@ -14,7 +14,7 @@ website:
   repo-url: https://github.com/akmclz/immprint
   favicon: favicon.svg
   announcement:
-    content: "**Development version** ImmPrint is in active alpha (v0.2.0-alpha) and may change before the 1.0 release. [See the changelog](changelog.html)."
+    content: "**Development version.** ImmPrint is in active alpha (v0.2.0-alpha) and may change before the 1.0 release. [See the changelog](changelog.html)."
     type: warning
     position: above-navbar
     icon: exclamation-triangle
