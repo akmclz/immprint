@@ -61,3 +61,6 @@ format:
       body-width: 900px
     code-copy: false
     link-external-newwindow: true
+    include-in-header:
+      text: |
+        <meta name="google-site-verification" content="FEXLAwNF8lR6wO5DDef8Wh0jojlKTkvLRAhS2tDvxJM" />
