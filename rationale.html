@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-5ece0e4a5ffbf02e28d4d657a8c77456.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fba406f166bc86d4fa44a74b1a697286.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4c646eefbc2ca1eee2c8d8534daac5e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -65,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="a3d54cd1435547b9a1265c781d0f8e81" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.3.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
+    <div id="quarto-announcement" data-announcement-id="f09694f71da1bb327b2a91fa4b900bd0" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.4.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
 </div></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -183,7 +183,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="principle-2---focus-on-the-signal-receiving-cell">Principle 2 - Focus on the signal-receiving cell</h2>
 <p>A set describes the cell <em>receiving</em> a signal or <em>enacting</em> a process, not the cell sending it. A pathway’s own ligand is <strong>excluded from its own signalling set</strong>, because the ligand reports on the <em>sending</em> cell. The same molecule is <strong>kept</strong> wherever it is an <em>output</em> of the process being measured.</p>
 <p>So interferon-gamma is treated differently by context: <code>IFNG</code> is <strong>not</strong> a member of <code>IMMPRINT_IFNG_SIGNALLING</code>, but it <strong>is</strong> a legitimate effector of <code>IMMPRINT_TYPE1_RESPONSE</code>. The same logic removes <code>IL2</code> from <code>IMMPRINT_IL2_SIGNALLING</code> and <code>TNF</code> from <code>IMMPRINT_TNF_SIGNALLING</code>, while leaving inputs, transducers and effectors in place.</p>
-<p>The checkpoint sets make this concrete. The inhibitory-receptor sets contain the receptor and its intrinsic signalling apparatus, and not the ligands presented by the opposing cell, so PD-L1 and PD-L2 are absent from <code>IMMPRINT_PD1_SIGNALLING</code>. These sets also contain only genes that are <em>induced or active</em> in the programme and exclude genes the pathway <em>represses</em>.</p>
 </section>
 <section id="principle-3---cell-type-specificity" class="level2">
 <h2 class="anchored" data-anchor-id="principle-3---cell-type-specificity">Principle 3 - Cell type specificity</h2>
@@ -232,7 +231,7 @@ Note
 <li><code>state</code> — the set describes a differentiation state, so score all tiers and read the effector tier as phenotype. <em>Does a high score describe what the cell is, or what it is doing right now?</em></li>
 <li><code>machinery</code> — the score reflects standing apparatus and makes no activity claim. <em>Is the pathway executed post-translationally, or are its tiers architectural?</em></li>
 </ul>
-<p>By design, the antigen-receptor and inhibitory-checkpoint sets (TCR, BCR, CTLA4, PD1) and oxidative phosphorylation carry no effector tier: they are detection, inhibition or capacity modules that terminate at the transducer level. All are <code>machinery</code>. <code>IMMPRINT_NLRP3_INFLAMMASOME</code> is <code>inducible</code>, but reports inflammasome <em>priming</em> only — activation itself is post-translational.</p>
+<p><code>IMMPRINT_OXIDATIVE_PHOSPHORYLATION</code> carries no effector tier and is <code>machinery</code>. <code>IMMPRINT_NLRP3_INFLAMMASOME</code> is <code>inducible</code>, but reports inflammasome <em>priming</em> only — activation itself is post-translational.</p>
 </section>
 <section id="the-regulatory-role-annotation" class="level2">
 <h2 class="anchored" data-anchor-id="the-regulatory-role-annotation">The regulatory role annotation</h2>
@@ -243,7 +242,7 @@ Note
 <li><code>activating</code>: a positive-feedback amplifier.</li>
 <li><code>context_dependent</code>: the sign genuinely varies, as for <code>PTPN11</code> in cytokine signalling.</li>
 </ul>
-<p>The sign is judged relative to the gene’s <em>own</em> pathway, which is why it lives on the membership and not the gene. <code>IL1RN</code> is an output of IL-10 even though it antagonises IL-1, so in <code>IMMPRINT_IL10_SIGNALLING</code> it is <code>none</code>, not a negative regulator. <code>BCL2</code> opposes intrinsic apoptosis but is a survival output of IL-7 and IL-15, so it is <code>inhibitory</code> in one set and <code>none</code> in the others. <code>PTPN11</code> enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere.</p>
+<p>The sign is judged relative to the gene’s <em>own</em> pathway, which is why it lives on the membership and not the gene. <code>IL1RN</code> is an output of IL-10 even though it antagonises IL-1, so in <code>IMMPRINT_IL10_SIGNALLING</code> it is <code>none</code>, not a negative regulator. <code>BCL2</code> opposes intrinsic apoptosis but is a survival output of IL-7 and IL-15, so it is <code>inhibitory</code> in one set and <code>none</code> in the others.</p>
 </section>
 <section id="versioning" class="level2">
 <h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
@@ -604,7 +603,7 @@ Note
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><strong>ImmPrint</strong> · collection v0.3.0-alpha</p>
+<p><strong>ImmPrint</strong> · collection v0.4.0-alpha</p>
 </div>   
     <div class="nav-footer-center">
 <p>Curated by Anthony K. McLean</p>

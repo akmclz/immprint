@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-5ece0e4a5ffbf02e28d4d657a8c77456.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fba406f166bc86d4fa44a74b1a697286.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4c646eefbc2ca1eee2c8d8534daac5e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -100,8 +100,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="a3d54cd1435547b9a1265c781d0f8e81" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.3.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
+    <div id="quarto-announcement" data-announcement-id="f09694f71da1bb327b2a91fa4b900bd0" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.4.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
 </div></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -215,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="raw-data-csv-or-json" class="level2">
 <h2 class="anchored" data-anchor-id="raw-data-csv-or-json">Raw data, CSV or JSON</h2>
 <p>The canonical snapshot is published here for direct, language-agnostic use:</p>
-<p><a href="data/immprint_0.3.0-alpha.csv" class="btn-ghost" download="immprint_0.3.0-alpha.csv">Download CSV</a> <a href="data/immprint_0.3.0-alpha.json" class="btn-ghost" download="immprint_0.3.0-alpha.json">Download JSON</a></p>
+<p><a href="data/immprint_0.4.0-alpha.csv" class="btn-ghost" download="immprint_0.4.0-alpha.csv">Download CSV</a> <a href="data/immprint_0.4.0-alpha.json" class="btn-ghost" download="immprint_0.4.0-alpha.json">Download JSON</a></p>
 <p>Both are also versioned in the <a href="https://github.com/akmclz/immprint">repository</a> under <code>data/</code>.</p>
 <section id="what-each-column-means" class="level3">
 <h3 class="anchored" data-anchor-id="what-each-column-means">What each column means</h3>
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There is no dedicated package yet, so read the published files directly:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://akmclz.github.io/immprint/data/immprint_0.3.0-alpha.csv"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://akmclz.github.io/immprint/data/immprint_0.4.0-alpha.csv"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ip <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># genes of one set, by tier</span></span>
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="versioning" class="level2">
 <h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
-<p>Every snapshot is immutable. Pin the version your analysis used, both the package <code>immprintr(version = "0.3.0-alpha")</code> and the raw files are version-stamped, so results stay reproducible. See the <a href="./changelog.html">changelog</a> and <a href="./cite.html">how to cite</a>.</p>
+<p>Every snapshot is immutable. Pin the version your analysis used, both the package <code>immprintr(version = "0.4.0-alpha")</code> and the raw files are version-stamped, so results stay reproducible. See the <a href="./changelog.html">changelog</a> and <a href="./cite.html">how to cite</a>.</p>
 
 
 </section>
@@ -647,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><strong>ImmPrint</strong> · collection v0.3.0-alpha</p>
+<p><strong>ImmPrint</strong> · collection v0.4.0-alpha</p>
 </div>   
     <div class="nav-footer-center">
 <p>Curated by Anthony K. McLean</p>
