@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -34,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c11abc8cc2b203d8167704c6b3f98431.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5ece0e4a5ffbf02e28d4d657a8c77456.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-800c2724414aae2592c0b78f0db026a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fba406f166bc86d4fa44a74b1a697286.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -62,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="9fe7b94aaef411212b6c6b9f79e6a6a0" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.2.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
+    <div id="quarto-announcement" data-announcement-id="a3d54cd1435547b9a1265c781d0f8e81" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.3.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
 </div></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -126,13 +129,13 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#why-not-just-use-hallmark-reactome-or-go" id="toc-why-not-just-use-hallmark-reactome-or-go" class="nav-link active" data-scroll-target="#why-not-just-use-hallmark-reactome-or-go">Why not just use Hallmark, Reactome or GO?</a></li>
   <li><a href="#principle-1---mechanistic-specificity" id="toc-principle-1---mechanistic-specificity" class="nav-link" data-scroll-target="#principle-1---mechanistic-specificity">Principle 1 - Mechanistic specificity</a></li>
-  <li><a href="#principle-2---inducer-and-responder-separation" id="toc-principle-2---inducer-and-responder-separation" class="nav-link" data-scroll-target="#principle-2---inducer-and-responder-separation">Principle 2 - Inducer and responder separation</a></li>
-  <li><a href="#principle-3---focus-on-the-signal-receiving-cell" id="toc-principle-3---focus-on-the-signal-receiving-cell" class="nav-link" data-scroll-target="#principle-3---focus-on-the-signal-receiving-cell">Principle 3 - Focus on the signal-receiving cell</a></li>
-  <li><a href="#principle-4---cell-type-specificity" id="toc-principle-4---cell-type-specificity" class="nav-link" data-scroll-target="#principle-4---cell-type-specificity">Principle 4 - Cell type specificity</a></li>
-  <li><a href="#principle-5---citations-you-can-follow" id="toc-principle-5---citations-you-can-follow" class="nav-link" data-scroll-target="#principle-5---citations-you-can-follow">Principle 5 - Citations you can follow</a></li>
-  <li><a href="#principle-6---corroboration-by-msigdb" id="toc-principle-6---corroboration-by-msigdb" class="nav-link" data-scroll-target="#principle-6---corroboration-by-msigdb">Principle 6 - Corroboration by MSigDB</a></li>
-  <li><a href="#principle-7---explicit-family-exclusions" id="toc-principle-7---explicit-family-exclusions" class="nav-link" data-scroll-target="#principle-7---explicit-family-exclusions">Principle 7 - Explicit family exclusions</a></li>
+  <li><a href="#principle-2---focus-on-the-signal-receiving-cell" id="toc-principle-2---focus-on-the-signal-receiving-cell" class="nav-link" data-scroll-target="#principle-2---focus-on-the-signal-receiving-cell">Principle 2 - Focus on the signal-receiving cell</a></li>
+  <li><a href="#principle-3---cell-type-specificity" id="toc-principle-3---cell-type-specificity" class="nav-link" data-scroll-target="#principle-3---cell-type-specificity">Principle 3 - Cell type specificity</a></li>
+  <li><a href="#principle-4---citations-you-can-follow" id="toc-principle-4---citations-you-can-follow" class="nav-link" data-scroll-target="#principle-4---citations-you-can-follow">Principle 4 - Citations you can follow</a></li>
+  <li><a href="#principle-5---corroboration-by-msigdb" id="toc-principle-5---corroboration-by-msigdb" class="nav-link" data-scroll-target="#principle-5---corroboration-by-msigdb">Principle 5 - Corroboration by MSigDB</a></li>
+  <li><a href="#principle-6---explicit-family-exclusions" id="toc-principle-6---explicit-family-exclusions" class="nav-link" data-scroll-target="#principle-6---explicit-family-exclusions">Principle 6 - Explicit family exclusions</a></li>
   <li><a href="#the-signalling-hierarchy-annotation" id="toc-the-signalling-hierarchy-annotation" class="nav-link" data-scroll-target="#the-signalling-hierarchy-annotation">The signalling hierarchy annotation</a></li>
+  <li><a href="#the-readout-type-annotation" id="toc-the-readout-type-annotation" class="nav-link" data-scroll-target="#the-readout-type-annotation">The readout type annotation</a></li>
   <li><a href="#the-regulatory-role-annotation" id="toc-the-regulatory-role-annotation" class="nav-link" data-scroll-target="#the-regulatory-role-annotation">The regulatory role annotation</a></li>
   <li><a href="#versioning" id="toc-versioning" class="nav-link" data-scroll-target="#versioning">Versioning</a></li>
   <li><a href="#intended-use" id="toc-intended-use" class="nav-link" data-scroll-target="#intended-use">Intended use</a></li>
@@ -164,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 <p>ImmPrint exists to score immune processes in transcriptomic data cleanly, and in a way you can defend. This page sets out the curatorial decisions that shape the collection.</p>
 <section id="why-not-just-use-hallmark-reactome-or-go" class="level2">
 <h2 class="anchored" data-anchor-id="why-not-just-use-hallmark-reactome-or-go">Why not just use Hallmark, Reactome or GO?</h2>
-<p>General-purpose collections are invaluable, but they are built for breadth rather than for clean immune <em>signatures</em>. Used directly for module scoring, they tend to share a few recurring problems:</p>
+<p>General-purpose collections are invaluable, but they are built for breadth, not for clean immune <em>signatures</em>. Used directly for module scoring, they tend to share a few recurring problems:</p>
 <ul>
 <li><strong>Non-specific drivers.</strong> Stress and activation-response genes (MAPK, ATF, JUN, FOS, HSP) recur across many sets, dampening the specificity of module scores.</li>
 <li><strong>Ligand contamination.</strong> Signalling sets frequently include the very ligand that triggers the pathway, either for completeness or to account for autocrine signalling in bulk RNA-seq data. However, single-cell RNA-seq allows ligand-producing and responding cells to be distinguished. In this context, a gene set that carries its own ligand pollutes the score of the cell you actually care about.</li>
@@ -176,21 +179,18 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="principle-1---mechanistic-specificity">Principle 1 - Mechanistic specificity</h2>
 <p>Each set aims to capture a single, mechanistically coherent process. Ubiquitous machinery that carries no pathway-specific information (ribosomal proteins, proteasome subunits, ubiquitination machinery, core housekeeping genes) is excluded from every set. The test for each candidate gene is not “is it expressed when this pathway is active?” but “does its expression <em>specifically</em> mark this process?”</p>
 </section>
-<section id="principle-2---inducer-and-responder-separation" class="level2">
-<h2 class="anchored" data-anchor-id="principle-2---inducer-and-responder-separation">Principle 2 - Inducer and responder separation</h2>
-<p>The most important and most context-dependent rule. A pathway’s own ligand is <strong>excluded from its own signalling set</strong>, because the ligand reports on the <em>sending</em> cell rather than the responding one. The same molecule is <strong>kept</strong> wherever it is a genuine <em>output</em> of the process being measured.</p>
-<p>So interferon-gamma is treated differently by context: <code>IFNG</code> is <strong>not</strong> a member of <code>IMMPRINT_IFNG_SIGNALLING</code>, but it <strong>is</strong> a legitimate effector of <code>IMMPRINT_TYPE1_RESPONSE</code>. The same logic removes <code>IL2</code> from <code>IMMPRINT_IL2_SIGNALLING</code> and <code>TNF</code> from <code>IMMPRINT_TNF_SIGNALLING</code>, while leaving receptors, transducers and downstream effectors in place.</p>
+<section id="principle-2---focus-on-the-signal-receiving-cell" class="level2">
+<h2 class="anchored" data-anchor-id="principle-2---focus-on-the-signal-receiving-cell">Principle 2 - Focus on the signal-receiving cell</h2>
+<p>A set describes the cell <em>receiving</em> a signal or <em>enacting</em> a process, not the cell sending it. A pathway’s own ligand is <strong>excluded from its own signalling set</strong>, because the ligand reports on the <em>sending</em> cell. The same molecule is <strong>kept</strong> wherever it is an <em>output</em> of the process being measured.</p>
+<p>So interferon-gamma is treated differently by context: <code>IFNG</code> is <strong>not</strong> a member of <code>IMMPRINT_IFNG_SIGNALLING</code>, but it <strong>is</strong> a legitimate effector of <code>IMMPRINT_TYPE1_RESPONSE</code>. The same logic removes <code>IL2</code> from <code>IMMPRINT_IL2_SIGNALLING</code> and <code>TNF</code> from <code>IMMPRINT_TNF_SIGNALLING</code>, while leaving inputs, transducers and effectors in place.</p>
+<p>The checkpoint sets make this concrete. The inhibitory-receptor sets contain the receptor and its intrinsic signalling apparatus, and not the ligands presented by the opposing cell, so PD-L1 and PD-L2 are absent from <code>IMMPRINT_PD1_SIGNALLING</code>. These sets also contain only genes that are <em>induced or active</em> in the programme and exclude genes the pathway <em>represses</em>.</p>
 </section>
-<section id="principle-3---focus-on-the-signal-receiving-cell" class="level2">
-<h2 class="anchored" data-anchor-id="principle-3---focus-on-the-signal-receiving-cell">Principle 3 - Focus on the signal-receiving cell</h2>
-<p>A generalisation of Principle 2: a set describes the cell <em>receiving</em> a signal or <em>enacting</em> a process rather than the cell sending it. The checkpoint sets make this concrete. The inhibitory-receptor sets contain the receptor and its intrinsic signalling apparatus rather than the ligands presented by the opposing cell (the PD-L1/PD-L2 ligands are deliberately absent from <code>IMMPRINT_PD1_SIGNALLING</code>). A corollary, for the coinhibitory programmes: these sets contain only genes that are <em>induced or active</em> in the programme and exclude genes the pathway <em>represses</em>.</p>
-</section>
-<section id="principle-4---cell-type-specificity" class="level2">
-<h2 class="anchored" data-anchor-id="principle-4---cell-type-specificity">Principle 4 - Cell type specificity</h2>
+<section id="principle-3---cell-type-specificity" class="level2">
+<h2 class="anchored" data-anchor-id="principle-3---cell-type-specificity">Principle 3 - Cell type specificity</h2>
 <p>The same ligand drives different programmes in different cells. TGF-β, for instance, does very different things in T cells, fibroblasts and epithelium. ImmPrint layers cell type-specific effector refinements onto each pathway’s shared <code>pan</code> core, so a cell is scored against the version that matches what it is. These refinements are added only where the divergence is real and well-documented.</p>
 </section>
-<section id="principle-5---citations-you-can-follow" class="level2">
-<h2 class="anchored" data-anchor-id="principle-5---citations-you-can-follow">Principle 5 - Citations you can follow</h2>
+<section id="principle-4---citations-you-can-follow" class="level2">
+<h2 class="anchored" data-anchor-id="principle-4---citations-you-can-follow">Principle 4 - Citations you can follow</h2>
 <p>Every gene set membership carries at least one PubMed ID. The citation should be primary literature that links that gene to that named pathway. A generic review is not enough. Where a gene appears in more than one set, each appearance is meant to be supported by a paper appropriate to that context.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -206,34 +206,44 @@ Note
 </div>
 </div>
 </section>
-<section id="principle-6---corroboration-by-msigdb" class="level2">
-<h2 class="anchored" data-anchor-id="principle-6---corroboration-by-msigdb">Principle 6 - Corroboration by MSigDB</h2>
+<section id="principle-5---corroboration-by-msigdb" class="level2">
+<h2 class="anchored" data-anchor-id="principle-5---corroboration-by-msigdb">Principle 5 - Corroboration by MSigDB</h2>
 <p>Where a gene’s membership is corroborated by an assigned MSigDB reference gene set (from Hallmark, Reactome or GO:BP), that set is recorded in <code>reference_gene_set</code>. A blank entry means either the gene is not covered by any MSigDB counterparts or that there is no valid counterpart.</p>
 </section>
-<section id="principle-7---explicit-family-exclusions" class="level2">
-<h2 class="anchored" data-anchor-id="principle-7---explicit-family-exclusions">Principle 7 - Explicit family exclusions</h2>
-<p>A few gene families are excluded from <strong>all</strong> sets by standing policy, because they are general stress or activation responders rather than pathway-specific markers: the <code>MAPK</code> families (<code>MAPK*</code>, <code>MAP2K*</code>, <code>MAP3K*</code>), and the <code>ATF</code>, <code>JUN</code>, <code>FOS</code> and <code>HSP</code> families. Excluding them keeps sets from collapsing toward a generic “this cell is activated” signal.</p>
+<section id="principle-6---explicit-family-exclusions" class="level2">
+<h2 class="anchored" data-anchor-id="principle-6---explicit-family-exclusions">Principle 6 - Explicit family exclusions</h2>
+<p>A few gene families are excluded from <strong>all</strong> sets by standing policy, because they are general stress or activation responders and not pathway-specific markers: the <code>MAPK</code> families (<code>MAPK*</code>, <code>MAP2K*</code>, <code>MAP3K*</code>) and the <code>ATF</code>, <code>JUN</code>, <code>FOS</code> and <code>HSP</code> families. Excluding them keeps sets from collapsing toward a generic activation signal.</p>
 </section>
 <section id="the-signalling-hierarchy-annotation" class="level2">
 <h2 class="anchored" data-anchor-id="the-signalling-hierarchy-annotation">The signalling hierarchy annotation</h2>
-<p>Separately from the principles above, every gene is annotated with a position in a three-tier signalling hierarchy (<code>pathway_level</code>):</p>
+<p>Separately from the principles above, every gene is annotated with a position in a three-tier hierarchy (<code>pathway_level</code>):</p>
 <ul>
-<li><span style="color:var(--tier-receptor);font-weight:600">Receptor (1)</span>: the sensor or input, meaning surface or intracellular receptors. For receptor-less metabolic or structural sets, the entry tier is the substrate-import transporters or the top driving transcription factor.</li>
-<li><span style="color:var(--tier-transducer);font-weight:600">Transducer (2)</span>: kinases, adaptors and transcription factors acting at the signalling node (STATs, IRFs, NF-κB, SMADs, master lineage TFs), plus core processing enzymes. Initiator and inflammatory caspases sit here. The tier marks where a gene product acts, so negative regulators that operate at this node (e.g.&nbsp;SOCS proteins and the inhibitory SMADs) sit here too. Their direction is recorded separately by <code>regulatory_role</code>.</li>
-<li><span style="color:var(--tier-effector);font-weight:600">Effector (3)</span>: the output, meaning secreted cytokines and chemokines, cytotoxic and antiviral/antimicrobial molecules, presented MHC, terminal metabolic complexes and induced target-gene products. Executioner caspases sit here.</li>
+<li><span style="color:var(--tier-input);font-weight:600">Input (1)</span>: the most upstream node <em>present in the set</em>. A surface or intracellular receptor where the set has one; the driving transcription factor where it does not, as in the MHC, proliferation and metabolic sets.</li>
+<li><span style="color:var(--tier-transducer);font-weight:600">Transducer (2)</span>: constitutive signalling machinery — kinases, adaptors, STATs, SMADs, the master lineage TF of the set it defines, core processing enzymes and structural complexes. The tier carries a claim: <em>this transcript is largely constitutive and does not track pathway activity</em>. Initiator and inflammatory caspases sit here.</li>
+<li><span style="color:var(--tier-effector);font-weight:600">Effector (3)</span>: the transcriptional output — secreted cytokines and chemokines, cytotoxic and antiviral/antimicrobial molecules, presented MHC, induced target-gene products and induced regulators. A negative regulator sits here when the pathway it restrains transcriptionally induces it (<code>SOCS3</code>, <code>TNFAIP3</code>, <code>AXIN2</code>). It sits at the transducer tier when it is constitutive (<code>AXIN1</code>, <code>SKI</code>, <code>TREX1</code>). Direction is recorded separately by <code>regulatory_role</code>. Executioner caspases sit here.</li>
 </ul>
-<p>The tiers are interpretive metadata rather than a scoring axis. You can subset a pathway by tier, but the effector tier is often small, so per-tier subsetting is best treated as optional. By design, antigen-receptor and inhibitory-checkpoint sets (TCR, BCR, CTLA4, PD1) carry no effector tier, since they are detection or inhibition modules that terminate at the transducer level.</p>
+<p>A gene may hold different tiers in different sets, by design: a master regulator is a transducer in the set it defines and an effector in the set that induces it, so <code>CIITA</code>, <code>GATA3</code>, <code>TBX21</code> and <code>FOXP3</code> each appear at two tiers across the collection.</p>
+</section>
+<section id="the-readout-type-annotation" class="level2">
+<h2 class="anchored" data-anchor-id="the-readout-type-annotation">The readout type annotation</h2>
+<p>Tiers are interpretive metadata and not a universal scoring axis, because not every pathway is transcriptionally legible. What a score over a set means is recorded per set in <code>readout_type</code>:</p>
+<ul>
+<li><code>inducible</code> — the pathway ends in a transcriptional programme, so the effector tier reads out activity. <em>Does the pathway end in a transcriptional programme whose genes are in this set?</em></li>
+<li><code>state</code> — the set describes a differentiation state, so score all tiers and read the effector tier as phenotype. <em>Does a high score describe what the cell is, or what it is doing right now?</em></li>
+<li><code>machinery</code> — the score reflects standing apparatus and makes no activity claim. <em>Is the pathway executed post-translationally, or are its tiers architectural?</em></li>
+</ul>
+<p>By design, the antigen-receptor and inhibitory-checkpoint sets (TCR, BCR, CTLA4, PD1) and oxidative phosphorylation carry no effector tier: they are detection, inhibition or capacity modules that terminate at the transducer level. All are <code>machinery</code>. <code>IMMPRINT_NLRP3_INFLAMMASOME</code> is <code>inducible</code>, but reports inflammasome <em>priming</em> only — activation itself is post-translational.</p>
 </section>
 <section id="the-regulatory-role-annotation" class="level2">
 <h2 class="anchored" data-anchor-id="the-regulatory-role-annotation">The regulatory role annotation</h2>
 <p>The tier locates a gene in the cascade; it does not say whether the gene drives the pathway or holds it back. That direction is recorded separately, per membership, in <code>regulatory_role</code>:</p>
 <ul>
-<li><code>none</code>: a forward component or a faithful output of the pathway. This is most genes, including receptors, transducers and effector products.</li>
+<li><code>none</code>: a forward component or an output of the pathway. This is most genes, including inputs, transducers and effector products.</li>
 <li><code>inhibitory</code>: a negative regulator of the pathway, such as the SOCS and CISH negative-feedback proteins, the inhibitory SMADs, the Wnt destruction complex, decoy receptors and the anti-apoptotic BCL2 guards.</li>
-<li><code>activating</code>: a genuine positive-feedback amplifier, reserved for the rare gene that feeds back to boost its own pathway rather than merely transmitting it.</li>
+<li><code>activating</code>: a positive-feedback amplifier.</li>
 <li><code>context_dependent</code>: the sign genuinely varies, as for <code>PTPN11</code> in cytokine signalling.</li>
 </ul>
-<p>The sign is judged relative to the gene’s <em>own</em> pathway, which is why it lives on the membership rather than the gene. <code>IL1RN</code> is a faithful output of IL-10 even though it antagonises IL-1, so in <code>IMMPRINT_IL10_SIGNALLING</code> it is <code>none</code>, not a negative regulator. <code>BCL2</code> opposes intrinsic apoptosis but is a survival output of IL-7 and IL-15, so it is <code>inhibitory</code> in one set and <code>none</code> in the others. <code>PTPN11</code> enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere.</p>
+<p>The sign is judged relative to the gene’s <em>own</em> pathway, which is why it lives on the membership and not the gene. <code>IL1RN</code> is an output of IL-10 even though it antagonises IL-1, so in <code>IMMPRINT_IL10_SIGNALLING</code> it is <code>none</code>, not a negative regulator. <code>BCL2</code> opposes intrinsic apoptosis but is a survival output of IL-7 and IL-15, so it is <code>inhibitory</code> in one set and <code>none</code> in the others. <code>PTPN11</code> enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere.</p>
 </section>
 <section id="versioning" class="level2">
 <h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
@@ -594,7 +604,7 @@ Note
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><strong>ImmPrint</strong> · collection v0.2.0-alpha</p>
+<p><strong>ImmPrint</strong> · collection v0.3.0-alpha</p>
 </div>   
     <div class="nav-footer-center">
 <p>Curated by Anthony K. McLean</p>

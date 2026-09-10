@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -69,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c11abc8cc2b203d8167704c6b3f98431.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5ece0e4a5ffbf02e28d4d657a8c77456.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-800c2724414aae2592c0b78f0db026a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fba406f166bc86d4fa44a74b1a697286.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -99,8 +102,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="9fe7b94aaef411212b6c6b9f79e6a6a0" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.2.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
+    <div id="quarto-announcement" data-announcement-id="a3d54cd1435547b9a1265c781d0f8e81" class="alert alert-warning hidden"><i class="bi bi-exclamation-triangle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Development version.</strong> ImmPrint is in active alpha (v0.3.0-alpha) and may change before the 1.0 release. <a href="changelog.html">See the changelog</a>.</p>
 </div></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -164,11 +167,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section class="hero">
-  <div class="eyebrow">ImmPrint immune gene set collection · v0.2.0-alpha</div>
+  <div class="eyebrow">ImmPrint immune gene set collection · v0.3.0-alpha</div>
   <h1>Reliable gene sets for immune signalling.</h1>
   <p class="lede">ImmPrint is a focused collection of immune signalling gene sets,
   built so you can score them with confidence. Each gene is specific to the
-  process, kept apart from the ligand that triggers it, placed in a Receptor →
+  process, kept apart from the ligand that triggers it, placed in an Input →
   Transducer → Effector hierarchy and tied to a paper for <em>that</em> gene in
   <em>that</em> pathway.</p>
   <div class="cta">
@@ -177,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </section>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/immprint_0.2.0-alpha.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/immprint_0.3.0-alpha.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -187,11 +190,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="30" data-source-offset="-0"><pre class="sourceCode js"><code class="sourceCode javascript" style="counter-reset: source-line 29;"><span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>heroSet <span class="op">=</span> <span class="st">"IMMPRINT_IFNG_SIGNALLING"</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>heroTiers <span class="op">=</span> [</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">tier</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Receptor"</span><span class="op">,</span> <span class="dt">genes</span><span class="op">:</span> [<span class="st">"IFNGR1"</span><span class="op">,</span> <span class="st">"IFNGR2"</span>] }<span class="op">,</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">tier</span><span class="op">:</span> <span class="st">"i"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Input"</span><span class="op">,</span> <span class="dt">genes</span><span class="op">:</span> [<span class="st">"IFNGR1"</span><span class="op">,</span> <span class="st">"IFNGR2"</span>] }<span class="op">,</span></span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">tier</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Transducer"</span><span class="op">,</span> <span class="dt">genes</span><span class="op">:</span> [<span class="st">"JAK1"</span><span class="op">,</span> <span class="st">"JAK2"</span><span class="op">,</span> <span class="st">"STAT1"</span>] }<span class="op">,</span></span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">tier</span><span class="op">:</span> <span class="st">"e"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Effector"</span><span class="op">,</span> <span class="dt">genes</span><span class="op">:</span> [<span class="st">"CXCL9"</span><span class="op">,</span> <span class="st">"CXCL10"</span><span class="op">,</span> <span class="st">"GBP1"</span>] }</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>tierColour <span class="op">=</span> ({ <span class="dt">r</span><span class="op">:</span> <span class="st">"var(--tier-receptor)"</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"var(--tier-transducer)"</span><span class="op">,</span> <span class="dt">e</span><span class="op">:</span> <span class="st">"var(--tier-effector)"</span> })</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>tierColour <span class="op">=</span> ({ <span class="dt">i</span><span class="op">:</span> <span class="st">"var(--tier-input)"</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="st">"var(--tier-transducer)"</span><span class="op">,</span> <span class="dt">e</span><span class="op">:</span> <span class="st">"var(--tier-effector)"</span> })</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>heroPapers <span class="op">=</span> ({</span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IFNGR1</span><span class="op">:</span> <span class="st">'Aguet, Dembić &amp; Merlin (1988), "Molecular cloning and expression of the human interferon-gamma receptor"'</span><span class="op">,</span></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IFNGR2</span><span class="op">:</span> <span class="st">'Hemmi et al. (1994), "A novel member of the interferon receptor family complements functionality of the murine interferon gamma receptor in human cells"'</span><span class="op">,</span></span>
@@ -271,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
 <span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="click-note"&gt;Click any gene to see its recorded citation&lt;/div&gt;</span></span>
 <span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">pmidLine</span>(picked)<span class="sc">}</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="trace-foot"&gt;*These are a few example genes from this set rather than the full list.&lt;/div&gt;</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="trace-foot"&gt;*These are a few example genes from this set, not the full list.&lt;/div&gt;</span></span>
 <span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
 <span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  el<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"click"</span><span class="op">,</span> (e) <span class="kw">=&gt;</span> {</span>
 <span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> span <span class="op">=</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="fu">closest</span>(<span class="st">".gene"</span>)<span class="op">;</span></span>
@@ -312,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="a-signalling-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="a-signalling-hierarchy">A signalling hierarchy</h3>
-<p>Every gene is placed in a three-tier Receptor → Transducer → Effector hierarchy, so a set can be read, or subset, by where each gene sits in the cascade.</p>
+<p>Every gene is placed in a three-tier Input → Transducer → Effector hierarchy, so a set can be read, or subset, by where each gene sits in the cascade.</p>
 </section>
 <section id="citations-you-can-follow" class="level3">
 <h3 class="anchored" data-anchor-id="citations-you-can-follow">Citations you can follow</h3>
@@ -326,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBGaWxlQXR0YWNobWVudChcImRhdGEvaW1tcHJpbnRfMC4yLjAtYWxwaGEuY3N2XCIpLmNzdigpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJoZXJvU2V0ID0gXCJJTU1QUklOVF9JRk5HX1NJR05BTExJTkdcIlxuaGVyb1RpZXJzID0gW1xuICB7IHRpZXI6IFwiclwiLCBsYWJlbDogXCJSZWNlcHRvclwiLCBnZW5lczogW1wiSUZOR1IxXCIsIFwiSUZOR1IyXCJdIH0sXG4gIHsgdGllcjogXCJ0XCIsIGxhYmVsOiBcIlRyYW5zZHVjZXJcIiwgZ2VuZXM6IFtcIkpBSzFcIiwgXCJKQUsyXCIsIFwiU1RBVDFcIl0gfSxcbiAgeyB0aWVyOiBcImVcIiwgbGFiZWw6IFwiRWZmZWN0b3JcIiwgZ2VuZXM6IFtcIkNYQ0w5XCIsIFwiQ1hDTDEwXCIsIFwiR0JQMVwiXSB9XG5dXG50aWVyQ29sb3VyID0gKHsgcjogXCJ2YXIoLS10aWVyLXJlY2VwdG9yKVwiLCB0OiBcInZhcigtLXRpZXItdHJhbnNkdWNlcilcIiwgZTogXCJ2YXIoLS10aWVyLWVmZmVjdG9yKVwiIH0pXG5oZXJvUGFwZXJzID0gKHtcbiAgSUZOR1IxOiAnQWd1ZXQsIERlbWJpxIcgJiBNZXJsaW4gKDE5ODgpLCBcIk1vbGVjdWxhciBjbG9uaW5nIGFuZCBleHByZXNzaW9uIG9mIHRoZSBodW1hbiBpbnRlcmZlcm9uLWdhbW1hIHJlY2VwdG9yXCInLFxuICBJRk5HUjI6ICdIZW1taSBldCBhbC4gKDE5OTQpLCBcIkEgbm92ZWwgbWVtYmVyIG9mIHRoZSBpbnRlcmZlcm9uIHJlY2VwdG9yIGZhbWlseSBjb21wbGVtZW50cyBmdW5jdGlvbmFsaXR5IG9mIHRoZSBtdXJpbmUgaW50ZXJmZXJvbiBnYW1tYSByZWNlcHRvciBpbiBodW1hbiBjZWxsc1wiJyxcbiAgSkFLMTogJ03DvGxsZXIgZXQgYWwuICgxOTkzKSwgXCJUaGUgcHJvdGVpbiB0eXJvc2luZSBraW5hc2UgSkFLMSBjb21wbGVtZW50cyBkZWZlY3RzIGluIGludGVyZmVyb24tYWxwaGEvYmV0YSBhbmQgLWdhbW1hIHNpZ25hbCB0cmFuc2R1Y3Rpb25cIicsXG4gIEpBSzI6ICdXYXRsaW5nIGV0IGFsLiAoMTk5MyksIFwiQ29tcGxlbWVudGF0aW9uIGJ5IHRoZSBwcm90ZWluIHR5cm9zaW5lIGtpbmFzZSBKQUsyIG9mIGEgbXV0YW50IGNlbGwgbGluZSBkZWZlY3RpdmUgaW4gdGhlIGludGVyZmVyb24tZ2FtbWEgc2lnbmFsIHRyYW5zZHVjdGlvbiBwYXRod2F5XCInLFxuICBTVEFUMTogJ1NodWFpIGV0IGFsLiAoMTk5MiksIFwiQWN0aXZhdGlvbiBvZiB0cmFuc2NyaXB0aW9uIGJ5IElGTi1nYW1tYTogdHlyb3NpbmUgcGhvc3Bob3J5bGF0aW9uIG9mIGEgOTEta0QgRE5BIGJpbmRpbmcgcHJvdGVpblwiJyxcbiAgQ1hDTDk6ICdMaWFvIGV0IGFsLiAoMTk5NSksIFwiSHVtYW4gTWlnIGNoZW1va2luZTogYmlvY2hlbWljYWwgYW5kIGZ1bmN0aW9uYWwgY2hhcmFjdGVyaXphdGlvblwiJyxcbiAgQ1hDTDEwOiAnTHVzdGVyLCBVbmtlbGVzcyAmIFJhdmV0Y2ggKDE5ODUpLCBcIs6zLUludGVyZmVyb24gdHJhbnNjcmlwdGlvbmFsbHkgcmVndWxhdGVzIGFuIGVhcmx5LXJlc3BvbnNlIGdlbmUgY29udGFpbmluZyBob21vbG9neSB0byBwbGF0ZWxldCBwcm90ZWluc1wiJyxcbiAgR0JQMTogJ1ByYWthc2ggZXQgYWwuICgyMDAwKSwgXCJUcmlwaG9zcGhhdGUgc3RydWN0dXJlIG9mIGd1YW55bGF0ZS1iaW5kaW5nIHByb3RlaW4gMSBhbmQgaW1wbGljYXRpb25zIGZvciBudWNsZW90aWRlIGJpbmRpbmcgYW5kIEdUUGFzZSBtZWNoYW5pc21cIidcbn0pXG5tdXRhYmxlIHBpY2tlZCA9IFwiU1RBVDFcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gcG1pZExpbmUoZ2VuZSkge1xuICBjb25zdCByb3cgPSBkYXRhLmZpbmQoZCA9PiBkLmdlbmVfc2V0ID09PSBoZXJvU2V0ICYmIGQuZ2VuZV9zeW1ib2wgPT09IGdlbmUpO1xuICBjb25zdCBpZHMgPSByb3cgPyBTdHJpbmcocm93LnBtaWRzKS5zcGxpdChcIjtcIikubWFwKHMgPT4gcy50cmltKCkpLmZpbHRlcihCb29sZWFuKSA6IFtdO1xuICBjb25zdCBjb2wgPSBoZXJvVGllcnMuZmluZChjID0+IGMuZ2VuZXMuaW5jbHVkZXMoZ2VuZSkpO1xuICBjb25zdCBjb2xvdXIgPSBjb2wgPyB0aWVyQ29sb3VyW2NvbC50aWVyXSA6IFwidmFyKC0taW5rKVwiO1xuICByZXR1cm4gaHRtbGA8ZGl2IGNsYXNzPVwicG1pZFwiPlxuICAgIDxkaXYgY2xhc3M9XCJwbWlkLWxpbmVcIj48c3Ryb25nIHN0eWxlPSR7XCJjb2xvcjpcIiArIGNvbG91cn0+JHtnZW5lfTwvc3Ryb25nPiAmbmJzcDvCtyZuYnNwOyAke2lkcy5sZW5ndGhcbiAgICAgID8gaWRzLm1hcCgoaWQsIGkpID0+IGh0bWxgJHtpID8gXCIsIFwiIDogXCJcIn08YSBzdHlsZT0ke1wiY29sb3I6XCIgKyBjb2xvdXJ9IGhyZWY9JHtcImh0dHBzOi8vcHVibWVkLm5jYmkubmxtLm5paC5nb3YvXCIgKyBpZCArIFwiL1wifSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub29wZW5lclwiPlBNSUQgJHtpZH08L2E+YClcbiAgICAgIDogXCJubyByZWNvcmRlZCBjaXRhdGlvblwifTwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJwYXBlci10aXRsZVwiPiR7aGVyb1BhcGVyc1tnZW5lXSB8fCBcIlwifTwvZGl2PlxuICA8L2Rpdj5gO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBlbCA9IGh0bWxgPGRpdiBjbGFzcz1cInRyYWNlXCI+XG4gICAgPGRpdiBjbGFzcz1cInRyYWNlLWhlYWRcIj5vbmUgc2V0LCB0aHJlZSB0aWVyczogPHNwYW4gY2xhc3M9XCJzZXRuYW1lXCI+JHtoZXJvU2V0fTwvc3Bhbj4qPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cInRpZXJzXCI+XG4gICAgICAke2hlcm9UaWVycy5tYXAoY29sID0+IGh0bWxgPGRpdiBjbGFzcz1cInRpZXIgJHtjb2wudGllcn1cIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cInRsYWJlbFwiPiR7Y29sLmxhYmVsfTwvZGl2PlxuICAgICAgICAke2NvbC5nZW5lcy5tYXAoZyA9PiBodG1sYDxzcGFuIGNsYXNzPVwiZ2VuZVwiIGRhdGEtZ2VuZT1cIiR7Z31cIlxuICAgICAgICAgICAgc3R5bGU9JHtwaWNrZWQgPT09IGcgPyAoXCJib3JkZXItYm90dG9tLWNvbG9yOlwiICsgdGllckNvbG91cltjb2wudGllcl0pIDogXCJcIn0+JHtnfTwvc3Bhbj5gKX1cbiAgICAgIDwvZGl2PmApfVxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJjbGljay1ub3RlXCI+Q2xpY2sgYW55IGdlbmUgdG8gc2VlIGl0cyByZWNvcmRlZCBjaXRhdGlvbjwvZGl2PlxuICAgICR7cG1pZExpbmUocGlja2VkKX1cbiAgICA8ZGl2IGNsYXNzPVwidHJhY2UtZm9vdFwiPipUaGVzZSBhcmUgYSBmZXcgZXhhbXBsZSBnZW5lcyBmcm9tIHRoaXMgc2V0IHJhdGhlciB0aGFuIHRoZSBmdWxsIGxpc3QuPC9kaXY+XG4gIDwvZGl2PmA7XG4gIGVsLmFkZEV2ZW50TGlzdGVuZXIoXCJjbGlja1wiLCAoZSkgPT4ge1xuICAgIGNvbnN0IHNwYW4gPSBlLnRhcmdldC5jbG9zZXN0KFwiLmdlbmVcIik7XG4gICAgaWYgKHNwYW4gJiYgc3Bhbi5kYXRhc2V0LmdlbmUpIG11dGFibGUgcGlja2VkID0gc3Bhbi5kYXRhc2V0LmdlbmU7XG4gIH0pO1xuICByZXR1cm4gZWw7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxkaXYgY2xhc3M9XCJzdGF0c3RyaXBcIj5cbiAgPGRpdiBjbGFzcz1cInN0YXRcIj48ZGl2IGNsYXNzPVwibnVtXCI+JHtuZXcgU2V0KGRhdGEubWFwKGQgPT4gZC5nZW5lX3NldCkpLnNpemV9PC9kaXY+PGRpdiBjbGFzcz1cImNhcFwiPmdlbmUgc2V0czwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwic3RhdFwiPjxkaXYgY2xhc3M9XCJudW1cIj4ke2RhdGEubGVuZ3RofTwvZGl2PjxkaXYgY2xhc3M9XCJjYXBcIj5nZW5lIG1lbWJlcnNoaXBzPC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJzdGF0XCI+PGRpdiBjbGFzcz1cIm51bVwiPiR7bmV3IFNldChkYXRhLmZsYXRNYXAoZCA9PiBkLmNlbGxfdHlwZS5zcGxpdChcIjtcIikubWFwKHMgPT4gcy50cmltKCkpKS5maWx0ZXIocyA9PiBzICYmIHMgIT09IFwicGFuXCIpKS5zaXplfTwvZGl2PjxkaXYgY2xhc3M9XCJjYXBcIj5jZWxsIHR5cGUgdmFyaWFudHM8L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cInN0YXRcIj48ZGl2IGNsYXNzPVwibnVtXCI+MTAwJTwvZGl2PjxkaXYgY2xhc3M9XCJjYXBcIj5QTUlELWJhY2tlZDwvZGl2PjwvZGl2PlxuPC9kaXY+YFxuIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBGaWxlQXR0YWNobWVudChcImRhdGEvaW1tcHJpbnRfMC4zLjAtYWxwaGEuY3N2XCIpLmNzdigpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJoZXJvU2V0ID0gXCJJTU1QUklOVF9JRk5HX1NJR05BTExJTkdcIlxuaGVyb1RpZXJzID0gW1xuICB7IHRpZXI6IFwiaVwiLCBsYWJlbDogXCJJbnB1dFwiLCBnZW5lczogW1wiSUZOR1IxXCIsIFwiSUZOR1IyXCJdIH0sXG4gIHsgdGllcjogXCJ0XCIsIGxhYmVsOiBcIlRyYW5zZHVjZXJcIiwgZ2VuZXM6IFtcIkpBSzFcIiwgXCJKQUsyXCIsIFwiU1RBVDFcIl0gfSxcbiAgeyB0aWVyOiBcImVcIiwgbGFiZWw6IFwiRWZmZWN0b3JcIiwgZ2VuZXM6IFtcIkNYQ0w5XCIsIFwiQ1hDTDEwXCIsIFwiR0JQMVwiXSB9XG5dXG50aWVyQ29sb3VyID0gKHsgaTogXCJ2YXIoLS10aWVyLWlucHV0KVwiLCB0OiBcInZhcigtLXRpZXItdHJhbnNkdWNlcilcIiwgZTogXCJ2YXIoLS10aWVyLWVmZmVjdG9yKVwiIH0pXG5oZXJvUGFwZXJzID0gKHtcbiAgSUZOR1IxOiAnQWd1ZXQsIERlbWJpxIcgJiBNZXJsaW4gKDE5ODgpLCBcIk1vbGVjdWxhciBjbG9uaW5nIGFuZCBleHByZXNzaW9uIG9mIHRoZSBodW1hbiBpbnRlcmZlcm9uLWdhbW1hIHJlY2VwdG9yXCInLFxuICBJRk5HUjI6ICdIZW1taSBldCBhbC4gKDE5OTQpLCBcIkEgbm92ZWwgbWVtYmVyIG9mIHRoZSBpbnRlcmZlcm9uIHJlY2VwdG9yIGZhbWlseSBjb21wbGVtZW50cyBmdW5jdGlvbmFsaXR5IG9mIHRoZSBtdXJpbmUgaW50ZXJmZXJvbiBnYW1tYSByZWNlcHRvciBpbiBodW1hbiBjZWxsc1wiJyxcbiAgSkFLMTogJ03DvGxsZXIgZXQgYWwuICgxOTkzKSwgXCJUaGUgcHJvdGVpbiB0eXJvc2luZSBraW5hc2UgSkFLMSBjb21wbGVtZW50cyBkZWZlY3RzIGluIGludGVyZmVyb24tYWxwaGEvYmV0YSBhbmQgLWdhbW1hIHNpZ25hbCB0cmFuc2R1Y3Rpb25cIicsXG4gIEpBSzI6ICdXYXRsaW5nIGV0IGFsLiAoMTk5MyksIFwiQ29tcGxlbWVudGF0aW9uIGJ5IHRoZSBwcm90ZWluIHR5cm9zaW5lIGtpbmFzZSBKQUsyIG9mIGEgbXV0YW50IGNlbGwgbGluZSBkZWZlY3RpdmUgaW4gdGhlIGludGVyZmVyb24tZ2FtbWEgc2lnbmFsIHRyYW5zZHVjdGlvbiBwYXRod2F5XCInLFxuICBTVEFUMTogJ1NodWFpIGV0IGFsLiAoMTk5MiksIFwiQWN0aXZhdGlvbiBvZiB0cmFuc2NyaXB0aW9uIGJ5IElGTi1nYW1tYTogdHlyb3NpbmUgcGhvc3Bob3J5bGF0aW9uIG9mIGEgOTEta0QgRE5BIGJpbmRpbmcgcHJvdGVpblwiJyxcbiAgQ1hDTDk6ICdMaWFvIGV0IGFsLiAoMTk5NSksIFwiSHVtYW4gTWlnIGNoZW1va2luZTogYmlvY2hlbWljYWwgYW5kIGZ1bmN0aW9uYWwgY2hhcmFjdGVyaXphdGlvblwiJyxcbiAgQ1hDTDEwOiAnTHVzdGVyLCBVbmtlbGVzcyAmIFJhdmV0Y2ggKDE5ODUpLCBcIs6zLUludGVyZmVyb24gdHJhbnNjcmlwdGlvbmFsbHkgcmVndWxhdGVzIGFuIGVhcmx5LXJlc3BvbnNlIGdlbmUgY29udGFpbmluZyBob21vbG9neSB0byBwbGF0ZWxldCBwcm90ZWluc1wiJyxcbiAgR0JQMTogJ1ByYWthc2ggZXQgYWwuICgyMDAwKSwgXCJUcmlwaG9zcGhhdGUgc3RydWN0dXJlIG9mIGd1YW55bGF0ZS1iaW5kaW5nIHByb3RlaW4gMSBhbmQgaW1wbGljYXRpb25zIGZvciBudWNsZW90aWRlIGJpbmRpbmcgYW5kIEdUUGFzZSBtZWNoYW5pc21cIidcbn0pXG5tdXRhYmxlIHBpY2tlZCA9IFwiU1RBVDFcIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gcG1pZExpbmUoZ2VuZSkge1xuICBjb25zdCByb3cgPSBkYXRhLmZpbmQoZCA9PiBkLmdlbmVfc2V0ID09PSBoZXJvU2V0ICYmIGQuZ2VuZV9zeW1ib2wgPT09IGdlbmUpO1xuICBjb25zdCBpZHMgPSByb3cgPyBTdHJpbmcocm93LnBtaWRzKS5zcGxpdChcIjtcIikubWFwKHMgPT4gcy50cmltKCkpLmZpbHRlcihCb29sZWFuKSA6IFtdO1xuICBjb25zdCBjb2wgPSBoZXJvVGllcnMuZmluZChjID0+IGMuZ2VuZXMuaW5jbHVkZXMoZ2VuZSkpO1xuICBjb25zdCBjb2xvdXIgPSBjb2wgPyB0aWVyQ29sb3VyW2NvbC50aWVyXSA6IFwidmFyKC0taW5rKVwiO1xuICByZXR1cm4gaHRtbGA8ZGl2IGNsYXNzPVwicG1pZFwiPlxuICAgIDxkaXYgY2xhc3M9XCJwbWlkLWxpbmVcIj48c3Ryb25nIHN0eWxlPSR7XCJjb2xvcjpcIiArIGNvbG91cn0+JHtnZW5lfTwvc3Ryb25nPiAmbmJzcDvCtyZuYnNwOyAke2lkcy5sZW5ndGhcbiAgICAgID8gaWRzLm1hcCgoaWQsIGkpID0+IGh0bWxgJHtpID8gXCIsIFwiIDogXCJcIn08YSBzdHlsZT0ke1wiY29sb3I6XCIgKyBjb2xvdXJ9IGhyZWY9JHtcImh0dHBzOi8vcHVibWVkLm5jYmkubmxtLm5paC5nb3YvXCIgKyBpZCArIFwiL1wifSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub29wZW5lclwiPlBNSUQgJHtpZH08L2E+YClcbiAgICAgIDogXCJubyByZWNvcmRlZCBjaXRhdGlvblwifTwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJwYXBlci10aXRsZVwiPiR7aGVyb1BhcGVyc1tnZW5lXSB8fCBcIlwifTwvZGl2PlxuICA8L2Rpdj5gO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCBlbCA9IGh0bWxgPGRpdiBjbGFzcz1cInRyYWNlXCI+XG4gICAgPGRpdiBjbGFzcz1cInRyYWNlLWhlYWRcIj5vbmUgc2V0LCB0aHJlZSB0aWVyczogPHNwYW4gY2xhc3M9XCJzZXRuYW1lXCI+JHtoZXJvU2V0fTwvc3Bhbj4qPC9kaXY+XG4gICAgPGRpdiBjbGFzcz1cInRpZXJzXCI+XG4gICAgICAke2hlcm9UaWVycy5tYXAoY29sID0+IGh0bWxgPGRpdiBjbGFzcz1cInRpZXIgJHtjb2wudGllcn1cIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cInRsYWJlbFwiPiR7Y29sLmxhYmVsfTwvZGl2PlxuICAgICAgICAke2NvbC5nZW5lcy5tYXAoZyA9PiBodG1sYDxzcGFuIGNsYXNzPVwiZ2VuZVwiIGRhdGEtZ2VuZT1cIiR7Z31cIlxuICAgICAgICAgICAgc3R5bGU9JHtwaWNrZWQgPT09IGcgPyAoXCJib3JkZXItYm90dG9tLWNvbG9yOlwiICsgdGllckNvbG91cltjb2wudGllcl0pIDogXCJcIn0+JHtnfTwvc3Bhbj5gKX1cbiAgICAgIDwvZGl2PmApfVxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJjbGljay1ub3RlXCI+Q2xpY2sgYW55IGdlbmUgdG8gc2VlIGl0cyByZWNvcmRlZCBjaXRhdGlvbjwvZGl2PlxuICAgICR7cG1pZExpbmUocGlja2VkKX1cbiAgICA8ZGl2IGNsYXNzPVwidHJhY2UtZm9vdFwiPipUaGVzZSBhcmUgYSBmZXcgZXhhbXBsZSBnZW5lcyBmcm9tIHRoaXMgc2V0LCBub3QgdGhlIGZ1bGwgbGlzdC48L2Rpdj5cbiAgPC9kaXY+YDtcbiAgZWwuYWRkRXZlbnRMaXN0ZW5lcihcImNsaWNrXCIsIChlKSA9PiB7XG4gICAgY29uc3Qgc3BhbiA9IGUudGFyZ2V0LmNsb3Nlc3QoXCIuZ2VuZVwiKTtcbiAgICBpZiAoc3BhbiAmJiBzcGFuLmRhdGFzZXQuZ2VuZSkgbXV0YWJsZSBwaWNrZWQgPSBzcGFuLmRhdGFzZXQuZ2VuZTtcbiAgfSk7XG4gIHJldHVybiBlbDtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPGRpdiBjbGFzcz1cInN0YXRzdHJpcFwiPlxuICA8ZGl2IGNsYXNzPVwic3RhdFwiPjxkaXYgY2xhc3M9XCJudW1cIj4ke25ldyBTZXQoZGF0YS5tYXAoZCA9PiBkLmdlbmVfc2V0KSkuc2l6ZX08L2Rpdj48ZGl2IGNsYXNzPVwiY2FwXCI+Z2VuZSBzZXRzPC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJzdGF0XCI+PGRpdiBjbGFzcz1cIm51bVwiPiR7ZGF0YS5sZW5ndGh9PC9kaXY+PGRpdiBjbGFzcz1cImNhcFwiPmdlbmUgbWVtYmVyc2hpcHM8L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cInN0YXRcIj48ZGl2IGNsYXNzPVwibnVtXCI+JHtuZXcgU2V0KGRhdGEuZmxhdE1hcChkID0+IGQuY2VsbF90eXBlLnNwbGl0KFwiO1wiKS5tYXAocyA9PiBzLnRyaW0oKSkpLmZpbHRlcihzID0+IHMgJiYgcyAhPT0gXCJwYW5cIikpLnNpemV9PC9kaXY+PGRpdiBjbGFzcz1cImNhcFwiPmNlbGwgdHlwZSB2YXJpYW50czwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwic3RhdFwiPjxkaXYgY2xhc3M9XCJudW1cIj4xMDAlPC9kaXY+PGRpdiBjbGFzcz1cImNhcFwiPlBNSUQtYmFja2VkPC9kaXY+PC9kaXY+XG48L2Rpdj5gXG4ifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -683,7 +686,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><strong>ImmPrint</strong> · collection v0.2.0-alpha</p>
+<p><strong>ImmPrint</strong> · collection v0.3.0-alpha</p>
 </div>   
     <div class="nav-footer-center">
 <p>Curated by Anthony K. McLean</p>
