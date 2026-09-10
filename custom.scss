@@ -276,6 +276,19 @@ code {
 .rolepill.act { color: #047857; background: rgba(5, 150, 105, 0.10); }
 .rolepill.ctx { color: #b45309; background: rgba(217, 119, 6, 0.10); }
 
+/* ---------- Browse readout-type pill (set-level) ---------- */
+.rtpill {
+  font-size: 0.72rem;
+  padding: 0.06em 0.5em;
+  margin-left: 0.5em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.rtpill.inducible { color: #0369a1; background: rgba(3, 105, 161, 0.10); }
+.rtpill.state     { color: #7e22ce; background: rgba(126, 34, 206, 0.10); }
+.rtpill.machinery { color: #475569; background: rgba(71, 85, 105, 0.10); }
+
 /* ---------- Browse table cell-type chips ---------- */
 /* Lineage colour carried in --ctc; tinted fill + dot. Supports several per cell. */
 .ctpill {

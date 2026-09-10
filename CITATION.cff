@@ -7,7 +7,7 @@ authors:
     family-names: "McLean"
     orcid: "https://orcid.org/0009-0001-0393-2183"
     affiliation: "Newcastle University"
-version: "0.3.0-alpha"
+version: "0.4.0-alpha"
 date-released: "2026-06-20"
 url: "https://akmclz.github.io/immprint"
 repository-code: "https://github.com/akmclz/immprint"

@@ -48,12 +48,6 @@ So interferon-gamma is treated differently by context: `IFNG` is **not** a membe
 `IMMPRINT_IL2_SIGNALLING` and `TNF` from `IMMPRINT_TNF_SIGNALLING`, while leaving
 inputs, transducers and effectors in place.
 
-The checkpoint sets make this concrete. The inhibitory-receptor sets contain the
-receptor and its intrinsic signalling apparatus, and not the ligands presented by the
-opposing cell, so PD-L1 and PD-L2 are absent from `IMMPRINT_PD1_SIGNALLING`. These
-sets also contain only genes that are *induced or active* in the programme and
-exclude genes the pathway *represses*.
-
 ## Principle 3 - Cell type specificity
 
 The same ligand drives different programmes in different cells. TGF-β, for
@@ -132,9 +126,7 @@ per set in `readout_type`:
 - `machinery` — the score reflects standing apparatus and makes no activity claim.
   *Is the pathway executed post-translationally, or are its tiers architectural?*
 
-By design, the antigen-receptor and inhibitory-checkpoint sets (TCR, BCR, CTLA4, PD1)
-and oxidative phosphorylation carry no effector tier: they are detection, inhibition
-or capacity modules that terminate at the transducer level. All are `machinery`.
+`IMMPRINT_OXIDATIVE_PHOSPHORYLATION` carries no effector tier and is `machinery`.
 `IMMPRINT_NLRP3_INFLAMMASOME` is `inducible`, but reports inflammasome *priming*
 only — activation itself is post-translational.
 
@@ -157,8 +149,7 @@ The sign is judged relative to the gene's *own* pathway, which is why it lives o
 the membership and not the gene. `IL1RN` is an output of IL-10 even
 though it antagonises IL-1, so in `IMMPRINT_IL10_SIGNALLING` it is `none`, not a
 negative regulator. `BCL2` opposes intrinsic apoptosis but is a survival output of
-IL-7 and IL-15, so it is `inhibitory` in one set and `none` in the others. `PTPN11`
-enacts the inhibitory signal in PD1 and CTLA4 but modulates JAK/STAT either way elsewhere.
+IL-7 and IL-15, so it is `inhibitory` in one set and `none` in the others.
 
 ## Versioning
 

@@ -8,6 +8,15 @@ is versioned independently of the [`immprintr`](https://akmclz.github.io/immprin
 R package that delivers it. Each released collection snapshot is immutable;
 new curation ships as a new version.
 
+## 0.4.0-alpha {#sec-0-4-0-alpha}
+
+*Removes five gene sets.*
+
+- `IMMPRINT_TCR_SIGNALLING`, `IMMPRINT_BCR_SIGNALLING`, `IMMPRINT_CTLA4_SIGNALLING`,
+  `IMMPRINT_PD1_SIGNALLING` and `IMMPRINT_COMPLEMENT_PRODUCTION` are removed.
+- 75 memberships are removed and none added. The collection holds **39 gene sets**
+  and **622** memberships.
+
 ## 0.3.0-alpha {#sec-0-3-0-alpha}
 
 *Re-tiers genes by transcriptional causality, renames the first tier, adds

@@ -6,7 +6,7 @@ page-layout: article
 
 ```{=html}
 <section class="hero">
-  <div class="eyebrow">ImmPrint immune gene set collection · v0.3.0-alpha</div>
+  <div class="eyebrow">ImmPrint immune gene set collection · v0.4.0-alpha</div>
   <h1>Reliable gene sets for immune signalling.</h1>
   <p class="lede">ImmPrint is a focused collection of immune signalling gene sets,
   built so you can score them with confidence. Each gene is specific to the
@@ -22,7 +22,7 @@ page-layout: article
 
 ```{ojs}
 //| echo: false
-data = FileAttachment("data/immprint_0.3.0-alpha.csv").csv()
+data = FileAttachment("data/immprint_0.4.0-alpha.csv").csv()
 ```
 
 ```{ojs}

@@ -11,11 +11,11 @@ execute:
 Pick a gene set to see its genes, signalling tiers and citations. Use the search
 box to filter the list. PMIDs link to PubMed.
 
-[Download CSV](data/immprint_0.3.0-alpha.csv){.btn-ghost download="immprint_0.3.0-alpha.csv"}
-[Download JSON](data/immprint_0.3.0-alpha.json){.btn-ghost download="immprint_0.3.0-alpha.json"}
+[Download CSV](data/immprint_0.4.0-alpha.csv){.btn-ghost download="immprint_0.4.0-alpha.csv"}
+[Download JSON](data/immprint_0.4.0-alpha.json){.btn-ghost download="immprint_0.4.0-alpha.json"}
 
 ```{ojs}
-data = FileAttachment("data/immprint_0.3.0-alpha.csv").csv()
+data = FileAttachment("data/immprint_0.4.0-alpha.csv").csv()
 ```
 
 ```{ojs}
@@ -93,7 +93,7 @@ filterBox = {
     + "&body=" + encodeURIComponent(body);
   return html`<div id="set-detail" style="margin-top:1.8rem">
     <div class="set-detail-head" style="font-size:1.05rem">${selectedSet}</div>
-    <p class="muted" style="margin:0.2rem 0 0.7rem">${rows.length} genes</p>
+    <p class="muted" style="margin:0.2rem 0 0.7rem">${rows.length} genes<span class=${"rtpill " + rows[0].readout_type}>${readoutLabel[rows[0].readout_type] ?? rows[0].readout_type}</span></p>
     ${tableFor(rows)}
     <div class="set-feedback">
       <a class="btn-ghost" href=${issueUrl} target="_blank" rel="noopener">Suggest changes to this gene set</a>
@@ -106,6 +106,8 @@ filterBox = {
 ```{ojs}
 tierLabel = ({ "1": "Input", "2": "Transducer", "3": "Effector" })
 tierClass = ({ "1": "i", "2": "t", "3": "e" })
+
+readoutLabel = ({ inducible: "Inducible", state: "State", machinery: "Machinery" })
 
 roleLabel = ({ inhibitory: "Inhibitory", activating: "Activating", context_dependent: "Context-dependent" })
 roleClass = ({ inhibitory: "inh", activating: "act", context_dependent: "ctx" })
