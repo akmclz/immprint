@@ -14,7 +14,7 @@ website:
   repo-url: https://github.com/akmclz/immprint
   favicon: favicon.svg
   announcement:
-    content: "**Development version.** ImmPrint is in active alpha (v0.2.0-alpha) and may change before the 1.0 release. [See the changelog](changelog.html)."
+    content: "**Development version.** ImmPrint is in active alpha (v0.3.0-alpha) and may change before the 1.0 release. [See the changelog](changelog.html)."
     type: warning
     position: above-navbar
     icon: exclamation-triangle
@@ -42,7 +42,7 @@ website:
   page-footer:
     border: true
     left: |
-      **ImmPrint** &middot; collection v0.2.0-alpha
+      **ImmPrint** &middot; collection v0.3.0-alpha
     center: |
       Curated by Anthony K. McLean
     right: |

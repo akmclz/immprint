@@ -18,7 +18,7 @@ $link-color: #7c3aed;
 $border-color: #e6e8ec;
 
 // Signalling-hierarchy triad (matches the ImmPrint logo)
-$tier-receptor: #7c3aed;   // deep violet
+$tier-input: #7c3aed;   // deep violet
 $tier-transducer: #06b6d4; // electric cyan
 $tier-effector: #f43f5e;   // warm coral
 
@@ -31,7 +31,7 @@ $navbar-fg: #16191f;
   --ink: #16191f;
   --slate: #5b6470;
   --line: #e6e8ec;
-  --tier-receptor: #7c3aed;
+  --tier-input: #7c3aed;
   --tier-transducer: #06b6d4;
   --tier-effector: #f43f5e;
 }
@@ -114,7 +114,7 @@ code {
 .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 @media (max-width: 620px) { .tiers { grid-template-columns: 1fr; } }
 .tier { border-top: 3px solid var(--line); padding-top: 0.6rem; }
-.tier.r { border-color: var(--tier-receptor); }
+.tier.i { border-color: var(--tier-input); }
 .tier.t { border-color: var(--tier-transducer); }
 .tier.e { border-color: var(--tier-effector); }
 .tier .tlabel {
@@ -124,7 +124,7 @@ code {
   text-transform: uppercase;
   margin-bottom: 0.55rem;
 }
-.tier.r .tlabel { color: var(--tier-receptor); }
+.tier.i .tlabel { color: var(--tier-input); }
 .tier.t .tlabel { color: var(--tier-transducer); }
 .tier.e .tlabel { color: var(--tier-effector); }
 .gene {
@@ -209,8 +209,8 @@ code {
   padding: 0.4rem 0;
   line-height: 1.4;
 }
-.setlink:hover { color: var(--tier-receptor); }
-.setlink.active { color: var(--tier-receptor); font-weight: 600; }
+.setlink:hover { color: var(--tier-input); }
+.setlink.active { color: var(--tier-input); font-weight: 600; }
 .setlink .ct { color: var(--slate); font-size: 0.78rem; }
 
 /* ---------- Browse: full table ---------- */
@@ -236,7 +236,7 @@ code {
   vertical-align: top;
 }
 .setT td.mono { font-family: $font-family-monospace; font-weight: 500; }
-.setT a { color: var(--tier-receptor); text-decoration: none; }
+.setT a { color: var(--tier-input); text-decoration: none; }
 .setT a:hover { text-decoration: underline; }
 
 .set-feedback {
@@ -259,7 +259,7 @@ code {
   color: #fff;
   white-space: nowrap;
 }
-.tierpill.r { background: var(--tier-receptor); }
+.tierpill.i { background: var(--tier-input); }
 .tierpill.t { background: var(--tier-transducer); }
 .tierpill.e { background: var(--tier-effector); }
 

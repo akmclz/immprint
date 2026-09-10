@@ -8,6 +8,65 @@ is versioned independently of the [`immprintr`](https://akmclz.github.io/immprin
 R package that delivers it. Each released collection snapshot is immutable;
 new curation ships as a new version.
 
+## 0.3.0-alpha {#sec-0-3-0-alpha}
+
+*Re-tiers genes by transcriptional causality, renames the first tier, adds
+`readout_type` and narrows both apoptosis sets.*
+
+- Tier 1 is renamed **Input**. It holds the most upstream node in a set, which is a
+  receptor in most sets and a driving transcription factor in the MHC, proliferation
+  and metabolic sets, where the Receptor label was wrong.
+- **88 memberships change tier.** A gene is now placed by where its transcript sits in
+  the response. The transducer tier claims a transcript is constitutive, and many
+  genes sitting there were induced outputs.
+- Induced negative feedback moves to the effector tier: `SOCS1`, `SOCS3`, `CISH`,
+  `USP18`, `TNFAIP3`, `NFKBIA`, `NFKBIZ`, `TNIP3`, `BCL3`, `AXIN2`, `DTX1`, `BIRC3`,
+  `CFLAR`, `SMAD7`, `SKIL` and `IL13RA2`. This reverses the 0.2.0 placement of
+  `TNFAIP3` and `NFKBIA`, which were tiered by where their proteins act. Both are
+  NF-κB target genes whose transcripts track TNF pathway activity.
+- The rule is transcriptional induction, not inhibition. `AXIN1`, `BIRC2`, `XIAP`,
+  `SKI`, `SMAD6`, `IRF9`, `TREX1` and `ENPP1` are constitutive negative or standing
+  regulators and stay at the transducer tier.
+- Induced transcription factors and kinases move to the effector tier: `IRF1`, `IRF8`
+  and `CIITA` in IFNG, `IRF7` in IFNA/IFNB, `TBX21` in IL12, `GATA3` in IL4/IL13,
+  `PRDM1` and `BCL6` in IL21, `CEBPB` in IL17, `ZEB1` in TGFB and `PIM1` in CSF2.
+- Tiers are set-relative. A master regulator is a transducer in the set it defines and
+  an effector in the set that induces it, so `CIITA`, `GATA3`, `TBX21` and `FOXP3`
+  each hold two tiers.
+- Chemokine receptors that mark a polarised state move from Input to Effector:
+  `CXCR3` and `CCR5` (Type 1), `CCR4`, `CCR8` and `PTGDR2` (Type 2), `CCR6` (Type 17)
+  and `CTLA4` in the regulatory set. All sit downstream of the master TF, so tiering
+  them as inputs inverted those sets. Receptors for the polarising cytokines stay at
+  Input.
+- **New column `readout_type`**, placed after `regulatory_role`. It records what a
+  score over the set means: `inducible` where the effector tier reads out activity
+  (32 sets), `state` where the set describes a differentiation state and all tiers
+  should be scored (6 sets) and `machinery` where the score reflects standing
+  apparatus with no activity claim (6 sets).
+- The metabolic sets were tiered by position in metabolite or electron flux, which
+  carries no information in transcript space because their genes are co-regulated.
+  `HIF1A` and `PPARA` become Inputs with their target regulons at the effector tier.
+  `PPARGC1A`, `NRF1` and `TFAM` become Inputs, and the eighteen ETC and ATP-synthase
+  subunits collapse to one transducer tier.
+  `IMMPRINT_OXIDATIVE_PHOSPHORYLATION` has no effector tier and is `machinery`, since
+  nothing in the transcriptome reads out respiratory flux.
+- **`IMMPRINT_APOPTOSIS_INTRINSIC` narrows from 22 to 8 memberships** and becomes an
+  apoptotic priming set of the transcriptionally dynamic BCL2 family. Execution
+  machinery and the post-translationally regulated BH3-only proteins are removed,
+  along with `TP53`, whose transcript stays flat whatever p53 is doing. Single-cell QC
+  discards high-mitochondrial-fraction cells, so genes reporting on execution report
+  on a population that has already been filtered out.
+- **`IMMPRINT_APOPTOSIS_EXTRINSIC` narrows from 15 to 6 memberships**: `FAS`,
+  `TNFRSF10A`, `TNFRSF10B`, `CASP8`, `CASP10` and `CFLAR`. `TNFRSF1A`, `TRADD`,
+  `FADD`, `BIRC2`, `BIRC3` and `BID` duplicated `IMMPRINT_TNF_SIGNALLING`.
+- 23 memberships are removed and none added. The column order is `gene_set,
+  gene_symbol, pathway_level, regulatory_role, readout_type, cell_type, pmids,
+  reference_gene_set`. The collection holds **44 gene sets** and **697** memberships.
+- `IMMPRINT_COMPLEMENT_PRODUCTION` is unchanged and carries
+  `readout_type = machinery` as a holding value. Its tiers encode the complement
+  cascade, which runs extracellularly across cells. It is slated for removal in
+  0.4.0-alpha.
+
 ## 0.2.0-alpha {#sec-0-2-0-alpha}
 
 *Adds a regulatory role annotation, replaces many animal-only citations with human ones and extends
@@ -31,26 +90,26 @@ cell type to multiple lineages.*
   throughout, since its receptor is lymphoid-restricted and human IL7R loss of
   function spares B and NK cells. IL15 is restricted to `T cell; NK cell`, its
   responder lineages. `IL15RA` is removed, since the high-affinity chain is
-  expressed by the trans-presenting myeloid or stromal cell rather than the
+  expressed by the trans-presenting myeloid or stromal cell and not the
   responder, and ImmPrint records genes expressed by the responding cell.
   Cytolytic effectors are `T cell; NK cell`. 55 memberships had their cell type
   revised.
 - `CD80` and `CD86` are removed from `IMMPRINT_CTLA4_SIGNALLING`. They are the B7
-  ligands on the antigen-presenting cell rather than components of the T-cell
+  ligands on the antigen-presenting cell and not components of the T-cell
   signal, so they sit outside a signalling set on the same grounds costimulatory
   molecules are excluded from MHC class II.
 - `TNFAIP3` (A20) and `NFKBIA` (IκBα) are added to `IMMPRINT_TNF_SIGNALLING` at the
   transducer tier with `regulatory_role = inhibitory`. Both are TNF-induced, but
-  they enter as components rather than as induced outputs because each acts back on
+  they enter as components and not as induced outputs, because each acts back on
   the cascade itself.
 - `MCL1` is added to `IMMPRINT_IL7_SIGNALLING` at the effector tier, joining `BCL2`
   as an IL-7 driven survival output. Both cite the same human primary, which shows
   IL-7 sustaining Bcl-2 and Mcl-1 through STAT5 in human T cells.
 - `GZMB` is removed from `IMMPRINT_IL21_SIGNALLING`. Cytotoxic granule effectors
-  stay in `IMMPRINT_CYTOLYTIC_ACTIVITY` rather than being duplicated into the
+  stay in `IMMPRINT_CYTOLYTIC_ACTIVITY` and are not duplicated into the
   cytokine signalling sets that prime them.
 - `FASLG` is removed from `IMMPRINT_CYTOLYTIC_ACTIVITY`. It kills through the Fas
-  death-receptor pathway rather than granule exocytosis, so it falls outside the
+  death-receptor pathway and not granule exocytosis, so it falls outside the
   granule-mediated scope of the set. The KLR recognition receptors are retained as
   the recognition step that precedes degranulation.
 - `GATA3` is added to `IMMPRINT_IL4_IL13_SIGNALLING`.
@@ -58,7 +117,7 @@ cell type to multiple lineages.*
   to `IMMPRINT_IL17_SIGNALLING`, all at the effector tier. Each is an inflammatory
   output induced through the named pathway in human cells.
 - `CSF2` (GM-CSF) is added to `IMMPRINT_IL2_SIGNALLING` and
-  `IMMPRINT_IL12_SIGNALLING` at the effector tier rather than to
+  `IMMPRINT_IL12_SIGNALLING` at the effector tier and not to
   `IMMPRINT_IL23_SIGNALLING`. In human T helper cells GM-CSF is induced by IL-2
   through STAT5 and promoted by the IL-12 driven Th1 axis while the IL-23 axis
   constrains it, reversing the expectation set by mouse pathogenic-Th17 models.

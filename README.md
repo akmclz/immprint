@@ -12,7 +12,7 @@ This repository is the **home of the ImmPrint collection**, holding the
 data, the curation rationale and the project website. ImmPrint is a
 focused collection of immune signalling gene sets for scoring
 transcriptomic data. Each gene is specific to the process, kept apart
-from the ligand that triggers it, placed in a Receptor, Transducer,
+from the ligand that triggers it, placed in an Input, Transducer,
 Effector hierarchy and tied to a paper that links each gene to its
 pathway.
 

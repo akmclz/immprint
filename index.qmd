@@ -6,11 +6,11 @@ page-layout: article
 
 ```{=html}
 <section class="hero">
-  <div class="eyebrow">ImmPrint immune gene set collection · v0.2.0-alpha</div>
+  <div class="eyebrow">ImmPrint immune gene set collection · v0.3.0-alpha</div>
   <h1>Reliable gene sets for immune signalling.</h1>
   <p class="lede">ImmPrint is a focused collection of immune signalling gene sets,
   built so you can score them with confidence. Each gene is specific to the
-  process, kept apart from the ligand that triggers it, placed in a Receptor →
+  process, kept apart from the ligand that triggers it, placed in an Input →
   Transducer → Effector hierarchy and tied to a paper for <em>that</em> gene in
   <em>that</em> pathway.</p>
   <div class="cta">
@@ -22,18 +22,18 @@ page-layout: article
 
 ```{ojs}
 //| echo: false
-data = FileAttachment("data/immprint_0.2.0-alpha.csv").csv()
+data = FileAttachment("data/immprint_0.3.0-alpha.csv").csv()
 ```
 
 ```{ojs}
 //| echo: false
 heroSet = "IMMPRINT_IFNG_SIGNALLING"
 heroTiers = [
-  { tier: "r", label: "Receptor", genes: ["IFNGR1", "IFNGR2"] },
+  { tier: "i", label: "Input", genes: ["IFNGR1", "IFNGR2"] },
   { tier: "t", label: "Transducer", genes: ["JAK1", "JAK2", "STAT1"] },
   { tier: "e", label: "Effector", genes: ["CXCL9", "CXCL10", "GBP1"] }
 ]
-tierColour = ({ r: "var(--tier-receptor)", t: "var(--tier-transducer)", e: "var(--tier-effector)" })
+tierColour = ({ i: "var(--tier-input)", t: "var(--tier-transducer)", e: "var(--tier-effector)" })
 heroPapers = ({
   IFNGR1: 'Aguet, Dembić & Merlin (1988), "Molecular cloning and expression of the human interferon-gamma receptor"',
   IFNGR2: 'Hemmi et al. (1994), "A novel member of the interferon receptor family complements functionality of the murine interferon gamma receptor in human cells"',
@@ -77,7 +77,7 @@ function pmidLine(gene) {
     </div>
     <div class="click-note">Click any gene to see its recorded citation</div>
     ${pmidLine(picked)}
-    <div class="trace-foot">*These are a few example genes from this set rather than the full list.</div>
+    <div class="trace-foot">*These are a few example genes from this set, not the full list.</div>
   </div>`;
   el.addEventListener("click", (e) => {
     const span = e.target.closest(".gene");
@@ -115,7 +115,7 @@ present in `IMMPRINT_TYPE1_RESPONSE`. This matters most in single-cell data, whe
 the sending and receiving cells are not the same cell.
 
 ### A signalling hierarchy
-Every gene is placed in a three-tier Receptor → Transducer → Effector hierarchy, so a
+Every gene is placed in a three-tier Input → Transducer → Effector hierarchy, so a
 set can be read, or subset, by where each gene sits in the cascade.
 
 ### Citations you can follow

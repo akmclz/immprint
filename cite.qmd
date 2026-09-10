@@ -18,7 +18,7 @@ per-version DOI. Until then, cite the version and URL below.
 ## Citation
 
 > McLean, A. K. (2026). *ImmPrint: a curated, citation-backed collection of immune
-> signalling gene sets* (Version 0.2.0-alpha) [Data set].
+> signalling gene sets* (Version 0.3.0-alpha) [Data set].
 > <https://akmclz.github.io/immprint>
 
 ## BibTeX
@@ -29,7 +29,7 @@ per-version DOI. Until then, cite the version and URL below.
   title        = {{ImmPrint: a curated, citation-backed collection of immune
                   signalling gene sets}},
   year         = {2026},
-  version      = {0.2.0-alpha},
+  version      = {0.3.0-alpha},
   howpublished = {\url{https://akmclz.github.io/immprint}},
   note         = {Accessed: YYYY-MM-DD}
 }
